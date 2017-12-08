@@ -1,0 +1,18 @@
+python manage.py shell
+
+from personnel.models import Personnel, Physician, Surgeon, Nurse
+
+Personnel.objects.all()
+
+
+personnel_1 = Personnel(first_name="John", last_name="Smith", gender="M", address="1 Address Place, Newark, NJ", phone=123456789, salary=85000, ssn=111111111)
+
+personnel_1.save()
+
+personnel_2 = Personnel(first_name="Macy", last_name="Penny", gender="F", address="2 Address Place, Newark, NJ", phone=2468223337, salary=200000, ssn=22222222)
+
+personnel_2.save()
+
+personnel_3 = Personnel(first_name="Billy", last_name="Bob", gender="M", address="3 Address Place, Newark, NJ", phone=9782509466, salary=250000, ssn=33333333)
+
+personnel_3.save()

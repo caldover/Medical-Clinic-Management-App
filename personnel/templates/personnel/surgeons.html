@@ -1,0 +1,15 @@
+{% extends 'personnel/base.html' %}
+{% block title %}Our Surgeons{% endblock %}
+
+{% block body %}
+    <h3>Our Surgeons:</h3>
+    {% if all_surgeons %}
+        <ol>
+            {% for surgeon in all_surgeons %}
+                <li><a href="{% url 'personnel:detail' surgeon.employee_no_id %}">{{ surgeon }}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h5>No surgeons registered</h5>
+    {% endif %}
+{% endblock %}

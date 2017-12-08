@@ -1,0 +1,15 @@
+{% extends 'personnel/base.html' %}
+{% block title %}All Personnel{% endblock %}
+
+{% block body %}
+    <h3>All Personnel:</h3>
+    {% if all_personnel %}
+        <ol>
+            {% for personnel in all_personnel %}
+            <li><a href="{% url 'personnel:detail' personnel.id %}">{{ personnel.first_name }} {{ personnel.last_name }}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h5>No personnel registered</h5>
+    {% endif %}
+{% endblock %}
