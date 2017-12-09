@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -15,9 +16,12 @@ class Personnel(models.Model):
     last_name = models.CharField(max_length=20)
     gender = models.CharField(max_length=1) # M or F
     address = models.CharField(max_length=100)
-    phone = models.IntegerField()
+    phone = models.CharField(max_length=12)
     salary = models.IntegerField()
     ssn = models.IntegerField()
+
+    def get_absolute_url(self):
+        return reverse('personnel:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
          return self.first_name + ' ' + self.last_name
@@ -26,6 +30,9 @@ class Personnel(models.Model):
 class Physician(models.Model):
     employee_no = models.OneToOneField(Personnel, on_delete=models.CASCADE, primary_key=True)
     specialty = models.CharField(max_length=50)
+
+    #def get_absolute_url(self):
+    #    return reverse('personnel:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return str(self.employee_no)
