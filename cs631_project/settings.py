@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'cs631_project.wsgi.application'
 # default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 # default_dburl = 'mysql://root:fenderp33@localhost:3306/test_1'
 # default_dburl = 'mysql://mc677:pXRwRXIN@sql.njit.edu:3306/mc677'
-default_dburl = 'mysql://mc677:pXRwRXIN@128.235.208.216:3306/mc677'
+# default_dburl = 'mysql://mc677:pXRwRXIN@128.235.208.216:3306/mc677'
 
 # DATABASES = {
 #     # 'default': {
@@ -101,8 +101,11 @@ default_dburl = 'mysql://mc677:pXRwRXIN@128.235.208.216:3306/mc677'
 
 
 DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+    # 'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
+
+db_from_env = config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
