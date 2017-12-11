@@ -101,12 +101,15 @@ WSGI_APPLICATION = 'cs631_project.wsgi.application'
 # }
 
 
-DATABASES = {
-    # 'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-}
+# DATABASES = {
+#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+# }
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+# DATABASES['default'] = dj_database_url.config()
+
+DATABASES = {'default': dj_database_url.config(default='postgres://postgres:pass1234@localhost/nma_management')}
+
+# DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
