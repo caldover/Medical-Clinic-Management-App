@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 from decouple import config
-from dj_database_url import parse as dburl
+# from dj_database_url import parse as dburl
+import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -104,7 +105,7 @@ DATABASES = {
     # 'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
 
-db_from_env = config()
+db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 # Password validation
