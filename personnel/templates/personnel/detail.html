@@ -2,16 +2,14 @@
 {% block title %}Personnel - {% endblock %}
 
 {% block body %}
-
-    <h3>{{ personnel_list }}</h3>
-
-    <ul>
-        <li>Gender: {{ personnel_list.gender }}</li>
-        <li>Address: {{ personnel_list.address }}</li>
-        <li>Phone: {{ personnel_list.phone }}</li>
-        <li>Salary: ${{ personnel_list.salary }}</li>
-        <li>SSN: {{ personnel_list.ssn }}</li>
-        <li>Specialty: {{ personnel_list.specialty }}</li>
-    </ul>
-
+    <h3>Physician Details:</h3>
+    {% if personnel_list %}
+        <ol>
+            {% for physician in all_physicians %}
+                <li><a href="{% url 'personnel:detail' physician.employee_no_id %}">{{ physician }}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h5>No physicians registered</h5>
+    {% endif %}
 {% endblock %}
