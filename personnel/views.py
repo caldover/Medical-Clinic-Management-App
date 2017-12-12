@@ -51,13 +51,18 @@ class DetailView(generic.DetailView):
     model = Personnel
     template_name = 'personnel/detail.html'
 
-    context_object_name = 'personnel_list'
+    #context_object_name = 'personnel_list'
+    # def get_context_data(self, **kwargs):
+    #     context = super(DetailView, self).get_context_data(**kwargs)
+    #     context.update({
+    #         'personnel_list': Physician.objects.all(),
+    #         'personnel': Personnel.objects.all()
+    #     })
+    #     return context
+
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        context.update({
-            'personnel_list': Physician.objects.all(),
-            'personnel': Personnel.objects.all()
-        })
+        context['specialty'] = Physician.specialty
         return context
 
     def get_queryset(self):
