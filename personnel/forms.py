@@ -48,5 +48,5 @@ class SurgeonForm(forms.Form):
     ssn = forms.IntegerField()
     specialty = forms.CharField(max_length=50)
     contract_type = forms.CharField(max_length=50)
-    contract_length = forms.DateField(initial=datetime.date.today, input_formats=['%m-%d-%Y'])
+    contract_length = forms.DateField(initial=datetime.date.today, input_formats=['%m/%d/%Y'])
     # surgery_type_no = ...
