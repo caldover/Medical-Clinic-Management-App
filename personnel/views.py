@@ -220,14 +220,13 @@ def get_surgeon_info(request):
             ssn = form.cleaned_data['ssn']
             specialty = form.cleaned_data['specialty']
             contract_type = form.cleaned_data['contract_type']
-            contract_length = form.cleaned_data['contract_type']
+            # contract_length = form.cleaned_data['contract_type']
 
             personnel = Personnel(first_name=first_name, last_name=last_name, gender=gender, address=address,
                                   phone=phone, salary=salary, ssn=ssn)
             personnel.save()
 
-            surgeon = Surgeon(employee_no_id=personnel.id, specialty=specialty, contract_type=contract_type,
-                              contract_length=contract_length)
+            surgeon = Surgeon(employee_no_id=personnel.id, specialty=specialty, contract_type=contract_type, )
             surgeon.save()
 
             # redirect to a new URL:

@@ -3,7 +3,6 @@ from django import forms
 from localflavor.us.forms import USPhoneNumberField
 from .models import Personnel, Physician
 import datetime
-from cs631_project import settings
 
 #
 #
@@ -49,5 +48,5 @@ class SurgeonForm(forms.Form):
     ssn = forms.IntegerField()
     specialty = forms.CharField(max_length=50)
     contract_type = forms.CharField(max_length=50)
-    contract_length = forms.DateField(label='contract_length', initial=datetime.date.today, input_formats=['%Y-%m-%d', ])
+    # contract_length = forms.DateField(label='contract_length', initial=datetime.date.today, input_formats=['%Y-%m-%d', ])
     # surgery_type_no = ...
