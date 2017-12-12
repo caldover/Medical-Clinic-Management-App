@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'physicians/^(?P<pk>[0-9]+)/$', RedirectView.as_view(pattern_name='detail', permanent=False), name='physician_detail'),
 
     # /personnel/add/
-    url(r'add/$', views.PersonnelCreate.as_view(), name='personnel-add'),
+    #url(r'add/$', views.PersonnelCreate.as_view(), name='personnel-add'),
 
     # /personnel/add/
     #url(r'add/$', views.PersonnelPhysicianCreate.as_view(), name='personnel-add'),
