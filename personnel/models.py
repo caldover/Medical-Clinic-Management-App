@@ -79,8 +79,8 @@ class Surgeon(models.Model):
     employee_no = models.OneToOneField(Personnel, on_delete=models.CASCADE, primary_key=True)
     specialty = models.CharField(max_length=50)
     contract_type = models.CharField(max_length=20)
-    contract_length = models.DateField()
-    surgery_type_no = models.IntegerField()
+    contract_length = models.DateField('contract_length')
+    #surgery_type_no = models.IntegerField()
 
     def __str__(self):
         return str(self.employee_no)
