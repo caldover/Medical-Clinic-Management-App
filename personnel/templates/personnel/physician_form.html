@@ -13,6 +13,10 @@
                     <form class="form-horizontal" action="/personnel/physicians/add/" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <span class="text-danger small">{{ field.errors }}</span>
+                        </div>
+
                         <p><label for="first_name">First Name:</label>
                             <input id="first_name" type="text" name="first_name" maxlength="20" value="{{ first_name }}" required /></p>
 

@@ -27,4 +27,4 @@ class PhysicianForm(forms.Form):
     phone = USPhoneNumberField()
     salary = forms.IntegerField()
     ssn = forms.IntegerField()
-    # specialty = forms.CharField(max_length=50)
+    specialty = forms.CharField(max_length=50)

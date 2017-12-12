@@ -161,8 +161,8 @@ def get_physician_info(request):
                                   phone=phone, salary=salary, ssn=ssn)
             personnel.save()
 
-            # physician = Physician(employee=personnel.id, specialty=specialty)
-            # physician.save()
+            physician = Physician(employee=personnel.id, specialty=specialty)
+            physician.save()
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:index'))
