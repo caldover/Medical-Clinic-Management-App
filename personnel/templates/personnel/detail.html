@@ -3,10 +3,12 @@
 
 {% block body %}
     <h3>Physician Details:</h3>
-    <h3>{{ personnel }}</h3>
+    <h3>{{ Personnel }}</h3>
     <h3>{{ personnel_list }}</h3>
     {% if personnel_list %}
         <ul>
+                <li>{{ Personnel }}</li>
+                <li>{{ Personnel.gender }}</li>
             {% for physician in personnel_list %}
                 <li>{{ physician }}</li>
                 <li>{{ physician.first_name }}</li>
