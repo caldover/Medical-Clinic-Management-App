@@ -155,14 +155,14 @@ def get_physician_info(request):
             phone = form.cleaned_data['phone']
             salary = form.cleaned_data['salary']
             ssn = form.cleaned_data['ssn']
-            specialty = form.cleaned_data['specialty']
+            # specialty = form.cleaned_data['specialty']
 
             personnel = Personnel(first_name=first_name, last_name=last_name, gender=gender, address=address,
                                   phone=phone, salary=salary, ssn=ssn)
             personnel.save()
 
-            physician = Physician(employee=personnel.id, specialty=specialty)
-            physician.save()
+            # physician = Physician(employee=personnel.id, specialty=specialty)
+            # physician.save()
 
             # redirect to a new URL:
             return HttpResponseRedirect('/personnel/')
