@@ -170,4 +170,4 @@ def get_physician_info(request):
         else:
             form = PhysicianForm()
 
-        return render(request, 'physician/physician_form.html', {'form': form})
+    return render(request, 'physician/physician_form.html', {'form': form})
