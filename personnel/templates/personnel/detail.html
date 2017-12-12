@@ -1,16 +1,8 @@
 {% extends 'personnel/base.html' %}
-{% block title %}Personnel - {{ personnel }}{% endblock %}
+{% block title %}Personnel - {% endblock %}
 
 {% block body %}
 
-    <h3>{{ personnel }}</h3>
-
-    <ul>
-        <li>Gender: {{ personnel.gender }}</li>
-        <li>Address: {{ personnel.address }}</li>
-        <li>Phone: {{ personnel.phone }}</li>
-        <li>Salary: ${{ personnel.salary }}</li>
-        <li>SSN: {{ personnel.ssn }}</li>
-    </ul>
+    <h3>{{ personnel_list }}</h3>
 
 {% endblock %}
