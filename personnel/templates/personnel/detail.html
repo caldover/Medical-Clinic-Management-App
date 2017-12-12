@@ -4,6 +4,7 @@
 {% block body %}
 
     <h3>{{ object.first_name }} {{ object.last_name }}</h3>
+    <h3>{{ physician }}</h3>
 
     <ul>
         <li>Gender: {{ object.gender }}</li>
@@ -11,7 +12,7 @@
         <li>Phone: {{ object.phone }}</li>
         <li>Salary: ${{ object.salary }}</li>
         <li>SSN: {{ object.ssn }}</li>
-        <li>Specialty: {{ specialty.specialty }}</li>
+        <li>Specialty: {{ physician.specialty }}</li>
     </ul>
 
 {% endblock %}
