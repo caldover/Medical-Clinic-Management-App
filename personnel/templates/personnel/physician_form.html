@@ -10,32 +10,32 @@
             <div class="panel panel-default">
                 <div class="panel-body">
 
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="/physician/add/" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         <p><label for="first_name">First Name:</label>
-                            <input id="first_name" type="text" name="first_name" maxlength="20" required /></p>
+                            <input id="first_name" type="text" name="first_name" maxlength="20" value="{{ first_name }}" required /></p>
 
                         <p><label for="last_name">Last Name:</label>
-                            <input id="last_name" type="text" name="last_name" maxlength="20" required /></p>
+                            <input id="last_name" type="text" name="last_name" maxlength="20" value="{{ last_name }}" required /></p>
 
                         <p><label for="gender">Gender:</label>
-                            <input id="gender" type="text" name="gender" maxlength="1" required /></p>
+                            <input id="gender" type="text" name="gender" maxlength="1" value="{{ gender }}" required /></p>
 
                         <p><label for="address">Address</label>
-                            <input id="address" type="text" name="address" maxlength="100" required /></p>
+                            <input id="address" type="text" name="address" maxlength="100" value="{{ address }}" required /></p>
 
                         <p><label for="phone">Phone:</label>
-                            <input id="phone" type="text" name="phone" maxlength="12" required /></p>
+                            <input id="phone" type="text" name="phone" maxlength="12" value="{{ phone }}" required /></p>
 
                         <p><label for="salary">Salary:</label>
-                            <input id="salary" type="text" name="salary" maxlength="7" required /></p>
+                            <input id="salary" type="text" name="salary" maxlength="7" value="{{ salary }}" required /></p>
 
                         <p><label for="ssn">SSN:</label>
-                            <input id="ssn" type="text" name="ssn" maxlength="9" required /></p>
+                            <input id="ssn" type="text" name="ssn" maxlength="9" value="{{ ssn }}" required /></p>
 
                         <p><label for="specialty">Specialty:</label>
-                            <input id="specialty" type="text" name="specialty" maxlength="50" required /></p>
+                            <input id="specialty" type="text" name="specialty" maxlength="50" value="{{ specialty }}" required /></p>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
