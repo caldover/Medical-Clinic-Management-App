@@ -16,8 +16,12 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^personnel/', include('personnel.urls')),
+
+    # /physicians/employee_no
+    url(r'physicians/add/$', RedirectView.as_view(pattern_name='index', permanent=False), name='physician-add-redir'),
 ]
