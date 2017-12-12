@@ -33,10 +33,7 @@ urlpatterns = [
     # url(r'add/$', views.PersonnelCreate.as_view(), name='personnel-add'),
     # url(r'add/$', views.physicianView, name='personnel-add'),
 
-    # /personnel/physician/add/
+    # /personnel/physicians/add/
     url(r'physicians/add/$', views.get_physician_info, name='physician-add'),
-
-    # /physicians/employee_no
-    url(r'physicians/add/$', RedirectView.as_view(pattern_name='index', permanent=False), name='physician-add-redir'),
 
 ]
