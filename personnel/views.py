@@ -9,7 +9,7 @@ from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from .forms import PhysicianForm, SurgeonForm
+from .forms import PhysicianForm, SurgeonForm, NurseForm
 
 
 
@@ -238,3 +238,36 @@ def get_surgeon_info(request):
         form = SurgeonForm()
 
     return render(request, 'personnel/surgeon_form.html', {'form': form})
+
+
+def get_nurse_info(request):
+    if request.method == 'POST':
+        form = NurseForm(request.POST)
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            gender = form.cleaned_data['gender']
+            address = form.cleaned_data['address']
+            phone = form.cleaned_data['phone']
+            salary = form.cleaned_data['salary']
+            ssn = form.cleaned_data['ssn']
+            grade = form.cleaned_data['grade']
+            years_exp = form.cleaned_data['years_exp']
+
+            personnel = Personnel(first_name=first_name, last_name=last_name, gender=gender, address=address,
+                                  phone=phone, salary=salary, ssn=ssn)
+            personnel.save()
+
+            nurse = Nurse(employee_no_id=personnel.id, grade=grade, years_exp=years_exp)
+            nurse.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('personnel:index'))
+        else:
+            print(form.errors)
+
+    else:
+        form = NurseForm()
+
+    return render(request, 'personnel/nurse_form.html', {'form': form})
