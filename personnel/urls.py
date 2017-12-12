@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 from django.views.generic.base import RedirectView
 
-#app_name = 'personnel'
+app_name = 'personnel'
 
 urlpatterns = [
     # /personnel/
