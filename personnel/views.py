@@ -62,9 +62,21 @@ class DetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        context['physician'] = Physician.objects.get(employee_no_id=self.kwargs['pk'])
-        context['surgeon'] = Surgeon.objects.get(employee_no_id=self.kwargs['pk'])
-        context['nurse'] = Physician.objects.get(employee_no_id=self.kwargs['pk'])
+        try:
+            context['physician'] = Physician.objects.get(employee_no_id=self.kwargs['pk'])
+        except Physician.DoesNotExist:
+            context['physician'] = None
+
+        try:
+            context['surgeon'] = Surgeon.objects.get(employee_no_id=self.kwargs['pk'])
+        except Surgeon.DoesNotExist:
+            context['surgeon'] = None
+
+        try:
+            context['nurse'] = Physician.objects.get(employee_no_id=self.kwargs['pk'])
+        except Nurse.DoesNotExist:
+            context['nurse'] = None
+
         return context
 
     def get_queryset(self):
