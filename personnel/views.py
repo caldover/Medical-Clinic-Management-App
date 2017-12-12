@@ -165,7 +165,9 @@ def get_physician_info(request):
             # physician.save()
 
             # redirect to a new URL:
-            return HttpResponseRedirect('/personnel/')
+            return HttpResponseRedirect(reverse('personnel:index'))
+        else:
+            print(form.errors)
 
     else:
         form = PhysicianForm()
