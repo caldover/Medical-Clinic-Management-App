@@ -50,7 +50,7 @@
                             <input id="ssn" type="text" name="ssn" maxlength="9" value="{{ ssn }}" required /></p>
 
                         <p><label for="grade">Grade:</label>
-                            <input id="grade" type="text" name="grade" maxlength="1" value="{{ grade }}" required /></p>
+                            <input id="grade" type="text" name="grade" maxlength="1" value="{{ grade }}" pattern="[A-F]{3}" title="Grade A, B, C, D, F" required /></p>
 
                         <p><label for="years_exp">Years of Experience:</label>
                             <input id="years_exp" type="text" name="years_exp" maxlength="2" value="{{ years_exp }}" required /></p>
