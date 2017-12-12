@@ -3,16 +3,12 @@
 
 {% block body %}
     <h3>Our Physicians:</h3>
-    <h3>{{ personnel }}</h3>
-    <h3>{{ personnel_list }}</h3>
-    {% if personnel_list %}
-        <ul>
-            {% for physician in personnel_list %}
-                <li>{{ physician }}</li>
-                <li>{{ physician.first_name }}</li>
-                <li>{{ physician.specialty }}</li>
+    {% if all_physicians %}
+        <ol>
+            {% for physician in all_physicians %}
+                <li><a href="{% url 'personnel:detail' physician.employee_no_id %}">{{ physician }}</a></li>
             {% endfor %}
-        </ul>
+        </ol>
     {% else %}
         <h5>No physicians registered</h5>
     {% endif %}
