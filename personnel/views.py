@@ -167,7 +167,7 @@ def get_physician_info(request):
             # redirect to a new URL:
             return HttpResponseRedirect('/personnel/')
 
-        else:
-            form = PhysicianForm()
+    else:
+        form = PhysicianForm()
 
     return render(request, 'physician/physician_form.html', {'form': form})
