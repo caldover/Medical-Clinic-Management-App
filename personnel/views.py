@@ -53,7 +53,7 @@ class DetailView(generic.DetailView):
 
     context_object_name = 'personnel_list'
     def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
+        context = super(DetailView, self).get_context_data(**kwargs)
         context.update({
             'personnel_list': Physician.objects.all()
         })
