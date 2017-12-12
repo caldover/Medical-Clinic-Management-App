@@ -51,6 +51,17 @@ class DetailView(generic.DetailView):
     model = Personnel
     template_name = 'personnel/detail.html'
 
+    context_object_name = 'personnel_list'
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context.update({
+            'personnel_list': Physician.objects.all()
+        })
+        return context
+
+    def get_queryset(self):
+        return Personnel.objects.all()
+
 
 class PersonnelCreate(CreateView):
     model = Personnel
