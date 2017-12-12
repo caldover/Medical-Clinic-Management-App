@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^personnel/', include('personnel.urls')),
 
-    # /physicians/employee_no
+    # /physicians/add/
     url(r'physicians/add/$', RedirectView.as_view(pattern_name='index', permanent=False), name='physician-add-redir'),
 ]
