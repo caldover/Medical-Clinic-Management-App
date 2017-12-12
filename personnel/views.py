@@ -62,8 +62,7 @@ class DetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        p_id = Personnel.id
-        context['physician'] = Physician.objects.get(employee_no_id=p_id)
+        context['physician'] = Physician.objects.get(employee_no_id=self.kwargs['pk'])
         return context
 
     def get_queryset(self):
