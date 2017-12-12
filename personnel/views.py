@@ -73,7 +73,7 @@ class DetailView(generic.DetailView):
             context['surgeon'] = None
 
         try:
-            context['nurse'] = Physician.objects.get(employee_no_id=self.kwargs['pk'])
+            context['nurse'] = Nurse.objects.get(employee_no_id=self.kwargs['pk'])
         except Nurse.DoesNotExist:
             context['nurse'] = None
 

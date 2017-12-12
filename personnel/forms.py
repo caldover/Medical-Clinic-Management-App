@@ -33,11 +33,11 @@ class PhysicianForm(forms.Form):
 
 class SurgeonForm(forms.Form):
 
-    def clean_date(self):
-        contract_length = self.cleaned_data['contract_length']
-        if contract_length < datetime.date.today():
-            raise forms.ValidationError("Please enter a date that is not in the past.")
-        return contract_length
+    # def clean_date(self):
+    #     contract_length = self.cleaned_data['contract_length']
+    #     if contract_length < datetime.date.today():
+    #         raise forms.ValidationError("Please enter a date that is not in the past.")
+    #     return contract_length
 
     first_name = forms.CharField(max_length=20)
     last_name = forms.CharField(max_length=20)
