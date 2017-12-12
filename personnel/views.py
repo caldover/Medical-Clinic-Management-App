@@ -9,7 +9,7 @@ from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from .forms import PhysicianForm
+from .forms import PhysicianForm, SurgeonForm
 
 
 
@@ -204,3 +204,38 @@ def get_physician_info(request):
         form = PhysicianForm()
 
     return render(request, 'personnel/physician_form.html', {'form': form})
+
+
+def get_surgeon_info(request):
+    if request.method == 'POST':
+        form = SurgeonForm(request.POST)
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            gender = form.cleaned_data['gender']
+            address = form.cleaned_data['address']
+            phone = form.cleaned_data['phone']
+            salary = form.cleaned_data['salary']
+            ssn = form.cleaned_data['ssn']
+            specialty = form.cleaned_data['specialty']
+            contract_type = form.cleaned_data['contract_type']
+            contract_length = form.cleaned_data['contract_type']
+
+            personnel = Personnel(first_name=first_name, last_name=last_name, gender=gender, address=address,
+                                  phone=phone, salary=salary, ssn=ssn)
+            personnel.save()
+
+            surgeon = Surgeon(employee_no_id=personnel.id, specialty=specialty, contract_type=contract_type,
+                              contract_length=contract_length)
+            surgeon.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('personnel:index'))
+        else:
+            print(form.errors)
+
+    else:
+        form = SurgeonForm()
+
+    return render(request, 'personnel/surgeon_form.html', {'form': form})

@@ -36,4 +36,7 @@ urlpatterns = [
     # /personnel/physicians/add/
     url(r'physicians/add/$', views.get_physician_info, name='physician-add'),
 
+    # /personnel/surgeons/add/
+    url(r'surgeons/add/$', views.get_surgeon_info, name='surgeon-add'),
+
 ]

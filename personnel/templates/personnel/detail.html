@@ -16,7 +16,9 @@
         <li>Specialty: {{ physician.specialty }}</li>
 
         {% elif surgeon %}
-        <li>Specialty: {{ physician.specialty }}</li>
+        <li>Specialty: {{ surgeon.specialty }}</li>
+        <li>Contract Type: {{ surgeon.contract_type }}</li>
+        <li>Contract Length: {{ surgeon.contract_length }}</li>
 
         {% elif nurse %}
         <li>Specialty: {{ physician.specialty }}</li>

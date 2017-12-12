@@ -1,0 +1,77 @@
+{% extends 'personnel/base.html' %}
+{% block title %}Input Surgeon Information{% endblock %}
+{% block personnel_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form class="form-horizontal" action="/personnel/surgeons/add/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <p><label for="first_name">First Name:</label>
+                            <input id="first_name" type="text" name="first_name" maxlength="20" value="{{ first_name }}" required /></p>
+
+                        <p><label for="last_name">Last Name:</label>
+                            <input id="last_name" type="text" name="last_name" maxlength="20" value="{{ last_name }}" required /></p>
+
+                        <p><label for="gender">Gender:</label>
+                            <input id="gender" type="text" name="gender" maxlength="1" value="{{ gender }}" required /></p>
+
+                        <p><label for="address">Address</label>
+                            <input id="address" type="text" name="address" maxlength="100" value="{{ address }}" required /></p>
+
+                        <p><label for="phone">Phone:</label>
+                            <input id="phone" type="text" name="phone" maxlength="12" value="{{ phone }}" required /></p>
+
+                        <p><label for="salary">Salary:</label>
+                            <input id="salary" type="text" name="salary" maxlength="7" value="{{ salary }}" required /></p>
+
+                        <p><label for="ssn">SSN:</label>
+                            <input id="ssn" type="text" name="ssn" maxlength="9" value="{{ ssn }}" required /></p>
+
+                        <p><label for="specialty">Specialty:</label>
+                            <input id="specialty" type="text" name="specialty" maxlength="50" value="{{ specialty }}" required /></p>
+
+                        <p><label for="contract_type">Contract Type:</label>
+                            <input id="contract_type" type="text" name="contract_type" maxlength="50" value="{{ contract_type }}" required /></p>
+
+                        <p><label for="contract_length">Contract Length:</label>
+                            <input id="contract_length" type="date" name="contract_length" maxlength="50" value="{{ contract_length }}" required /></p>
+
+                        <!--INSERT SURGERY_TYPE_NO HERE-->
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
