@@ -1,7 +1,7 @@
 # from django.forms import ModelForm, inlineformset_factory
-# from django import forms
-# from localflavor.us.forms import USPhoneNumberField
-# from .models import Personnel, Physician
+from django import forms
+from localflavor.us.forms import USPhoneNumberField
+from .models import Personnel, Physician
 
 #
 #
@@ -19,12 +19,12 @@
 #
 # PhysicianFormSet = inlineformset_factory(Personnel, Physician, form=PhysicianForm, extra=1)
 
-# class PhysicianForm(forms.Form):
-#     first_name = forms.CharField(max_length=20)
-#     last_name = forms.CharField(max_length=20)
-#     gender = forms.CharField(max_length=1)  # M or F
-#     address = forms.CharField(max_length=100)
-#     phone = USPhoneNumberField()
-#     salary = forms.IntegerField()
-#     ssn = forms.IntegerField()
-#     specialty = forms.CharField(max_length=50)
+class PhysicianForm(forms.Form):
+    first_name = forms.CharField(max_length=20)
+    last_name = forms.CharField(max_length=20)
+    gender = forms.CharField(max_length=1)  # M or F
+    address = forms.CharField(max_length=100)
+    phone = USPhoneNumberField()
+    salary = forms.IntegerField()
+    ssn = forms.IntegerField()
+    specialty = forms.CharField(max_length=50)

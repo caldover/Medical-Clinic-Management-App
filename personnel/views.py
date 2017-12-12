@@ -9,6 +9,7 @@ from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
+from .forms import PhysicianForm
 
 
 
@@ -141,3 +142,32 @@ class PersonnelCreate(CreateView):
 #            form = PhysicianForm()
 #
 #         return render(request, 'personnel/personnel_form.html', {'form': form})
+
+def get_physician_info(request):
+    if request.method == 'POST':
+        form = PhysicianForm(request.POST)
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            gender = form.cleaned_data['gender']
+            address = form.cleaned_data['address']
+            phone = form.cleaned_data['phone']
+            salary = form.cleaned_data['salary']
+            ssn = form.cleaned_data['ssn']
+            specialty = form.cleaned_data['specialty']
+
+            personnel = Personnel(first_name=first_name, last_name=last_name, gender=gender, address=address,
+                                  phone=phone, salary=salary, ssn=ssn)
+            personnel.save()
+
+            physician = Physician(employee=personnel.id, specialty=specialty)
+            physician.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect('/personnel/')
+
+        else:
+            form = PhysicianForm()
+
+        return render(request, 'physician_form.html', {'form': form})

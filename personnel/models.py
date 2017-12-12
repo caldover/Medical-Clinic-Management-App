@@ -27,9 +27,46 @@ class Personnel(models.Model):
          return self.first_name + ' ' + self.last_name
 
 
+class PhysicianManager(models.Manager):
+    def create_physician(self):
+        from django.db import connection
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO `test_1`.`personnel_personnel` (`first_name`, `last_name`, `gender`, `address`, `phone`,
+                 `salary`, `ssn`) 
+	                VALUES ('Carl', 'Dio', 'M', '3 Street', 1234567892, 105000,545667456)
+                """)
+            cursor.execute("""
+                SELECT *
+                FROM `test_1`.`personnel_personnel` personnel
+                WHERE personnel.id = LAST_INSERT_ID()
+                """)
+
+            result_list = []
+            row = cursor.fetchone()
+            result_list.append(row)
+
+            cursor.execute("""
+                INSERT INTO `test_1`.`personnel_physician`(`specialty`, `employee_no_id`)
+                    VALUES('Cardiologist', LAST_INSERT_ID())
+                """)
+            cursor.execute("""
+                SELECT physician.specialty
+                FROM `test_1`.`personnel_physician` physician
+                WHERE personnel.id = LAST_INSERT_ID()
+                """)
+
+            row = cursor.fetchone()
+            result_list.append(row)
+
+        return result_list
+
+
 class Physician(models.Model):
     employee_no = models.OneToOneField(Personnel, on_delete=models.CASCADE, primary_key=True)
     specialty = models.CharField(max_length=50)
+
+    objects = PhysicianManager()
 
     #def get_absolute_url(self):
     #    return reverse('personnel:detail', kwargs={'pk': self.pk})
