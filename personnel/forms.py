@@ -50,3 +50,15 @@ class SurgeonForm(forms.Form):
     contract_type = forms.CharField(max_length=50)
     # contract_length = forms.DateField(label='contract_length', initial=datetime.date.today, input_formats=['%Y-%m-%d', ])
     # surgery_type_no = ...
+
+
+class NurseForm(forms.Form):
+    first_name = forms.CharField(max_length=20)
+    last_name = forms.CharField(max_length=20)
+    gender = forms.CharField(max_length=1)  # M or F
+    address = forms.CharField(max_length=100)
+    phone = USPhoneNumberField()
+    salary = forms.IntegerField()
+    ssn = forms.IntegerField()
+    grade = forms.CharField(max_length=1)
+    years_exp = forms.IntegerField()

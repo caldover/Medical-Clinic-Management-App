@@ -39,4 +39,7 @@ urlpatterns = [
     # /personnel/surgeons/add/
     url(r'surgeons/add/$', views.get_surgeon_info, name='surgeon-add'),
 
+    # /personnel/nurses/add/
+    url(r'nurses/add/$', views.get_nurse_info, name='nurse-add'),
+
 ]
