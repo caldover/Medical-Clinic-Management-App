@@ -34,6 +34,6 @@ urlpatterns = [
     # url(r'add/$', views.physicianView, name='personnel-add'),
 
     # /personnel/physician/add/
-    url(r'/physicians/add/$', views.get_physician_info(), name='physician-add'),
+    url(r'/physicians/add/$', views.get_physician_info, name='physician-add'),
 
 ]
