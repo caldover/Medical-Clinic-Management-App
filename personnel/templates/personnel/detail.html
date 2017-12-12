@@ -11,7 +11,14 @@
         <li>Phone: {{ object.phone }}</li>
         <li>Salary: ${{ object.salary }}</li>
         <li>SSN: {{ object.ssn }}</li>
+
         {% if physician %}
+        <li>Specialty: {{ physician.specialty }}</li>
+
+        {% elif surgeon %}
+        <li>Specialty: {{ physician.specialty }}</li>
+
+        {% elif nurse %}
         <li>Specialty: {{ physician.specialty }}</li>
         {% endif %}
     </ul>
