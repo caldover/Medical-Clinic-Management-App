@@ -79,7 +79,7 @@ class Surgeon(models.Model):
     employee_no = models.OneToOneField(Personnel, on_delete=models.CASCADE, primary_key=True)
     specialty = models.CharField(max_length=50)
     contract_type = models.CharField(max_length=20)
-    contract_length = models.DateField('contract_length')
+    contract_length = models.DateField('contract_length', blank=True, null=True)
     #surgery_type_no = models.IntegerField()
 
     def __str__(self):
