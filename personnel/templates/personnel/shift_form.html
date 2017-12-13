@@ -27,13 +27,6 @@
                                     </div>
                             {% endfor %}
                         {% endif %}
-                        <p><label for="personnel">Personnel:</label>
-                        <select id="personnel">
-                            {% for personnel in form %}
-                                <option value="{{ personnel.employee_no_id }}">{{ personnel.employee_no_id }}</option>
-                            {% endfor %}
-                        </select>
-                        </p>
 
                         {{ form.as_p }}
 
