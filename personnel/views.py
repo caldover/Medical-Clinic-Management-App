@@ -1,5 +1,6 @@
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.db import transaction
 from .models import Personnel, Physician, Surgeon, Nurse
@@ -11,6 +12,10 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from .forms import PhysicianForm, SurgeonForm, NurseForm
 
+
+
+class home(TemplateView):
+    template_name = 'cs631_project/home.html'
 
 
 class IndexView(generic.ListView):
