@@ -1,5 +1,5 @@
 {% extends 'personnel/base.html' %}
-{% block title %}Input Shift Information{% endblock %}
+{% block title %}Doctor Availability{% endblock %}
 {% block personnel_active %}active{% endblock %}
 
 {% block body %}
@@ -10,7 +10,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
 
-                    <form class="form-horizontal" action="/personnel/shift/" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="/personnel/physician/availability/" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         {% if form.errors %}
@@ -28,7 +28,7 @@
                             {% endfor %}
                         {% endif %}
 
-                        <h3>Select a Personnel and Date:</h3>
+                        <h3>Select a Doctor and Date:</h3>
 
                         {{ form.as_p }}
 

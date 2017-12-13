@@ -298,3 +298,11 @@ def get_shift_info(request):
         form = ShiftForm()
 
     return render(request, 'personnel/shift_form.html', {'form': form})
+
+
+class AvailView(generic.DetailView):
+    model = Schedule
+    template_name = 'personnel/availability.html'
+
+    def get_queryset(self):
+        return Schedule.objects.all()

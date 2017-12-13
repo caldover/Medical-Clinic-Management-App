@@ -39,6 +39,12 @@ urlpatterns = [
     # /personnel/physicians/add/
     url(r'physicians/add/$', views.get_physician_info, name='physician-add'),
 
+    # /personnel/physicians/availability/
+    #url(r'physicians/availability/$', views.get_physician_shift_info, name='get-physician-avail'),
+
+    # /personnel/physicians/availability/employee_no
+    url(r'physicians/availability/^(?P<pk>[0-9]+)/$', views.AvailView.as_view(), name='physician_avail'),
+
     # /personnel/surgeons/add/
     url(r'surgeons/add/$', views.get_surgeon_info, name='surgeon-add'),
 
