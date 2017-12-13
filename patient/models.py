@@ -9,7 +9,7 @@ class Patient(models.Model):
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=12)
     ssn = models.IntegerField()
-    blood_type = models.CharField(max_length=2)
+    blood_type = models.CharField(max_length=3)
 
     def get_absolute_url(self):
         return reverse('patient:detail', kwargs={'pk': self.pk})

@@ -10,4 +10,4 @@ class PatientForm(forms.Form):
     address = forms.CharField(max_length=100)
     phone = USPhoneNumberField()
     ssn = forms.IntegerField()
-    blood_type = forms.CharField(max_length=2)
+    blood_type = forms.CharField(max_length=3)
