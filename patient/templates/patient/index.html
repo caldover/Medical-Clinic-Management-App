@@ -1,0 +1,15 @@
+{% extends 'personnel/base.html' %}
+{% block title %}All Patients{% endblock %}
+
+{% block body %}
+    <h3>All Patients:</h3>
+    {% if all_patients %}
+        <ol>
+            {% for patient in all_patients %}
+            <li><a href="{% url 'patient:detail' patient.id %}">{{ patient.first_name }} {{ patient.last_name }}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h5>No patients registered</h5>
+    {% endif %}
+{% endblock %}

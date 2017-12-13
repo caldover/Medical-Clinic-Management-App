@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cs631_project',
     'personnel.apps.PersonnelConfig',
+    'patient',
     'localflavor'
 ]
 
