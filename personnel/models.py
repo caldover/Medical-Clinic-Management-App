@@ -97,7 +97,7 @@ class Nurse(models.Model):
 
 class Shift(models.Model):
     date = models.DateField()
-    employee_no = models.OneToOneField(Personnel, on_delete=models.CASCADE)
+    employee_no = models.ForeignKey(Personnel, on_delete=models.CASCADE)
     working_ind = models.BooleanField()
 
 
