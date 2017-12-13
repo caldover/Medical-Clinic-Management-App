@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cs631_project.apps.Cs631_projectConfig',
+    'cs631_project',
     'personnel.apps.PersonnelConfig',
     'localflavor'
 ]
