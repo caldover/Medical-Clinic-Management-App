@@ -100,6 +100,9 @@ class Shift(models.Model):
     employee_no = models.ForeignKey(Personnel, on_delete=models.CASCADE)
     working_ind = models.BooleanField()
 
+    class Meta:
+        unique_together = ('date', 'employee_no')
+
 
 class Schedule(models.Model):
     #date = models.OneToOneField(Shift, on_delete=models.CASCADE)
