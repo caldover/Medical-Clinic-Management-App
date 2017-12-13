@@ -62,3 +62,9 @@ class NurseForm(forms.Form):
     ssn = forms.IntegerField()
     grade = forms.CharField(max_length=1)
     years_exp = forms.IntegerField()
+
+
+class ShiftForm(forms.Form):
+    employee_no = forms.ModelChoiceField(queryset=Personnel.objects.all())
+    date = forms.DateField(label='date', initial=datetime.date.today,
+                                      input_formats=['%Y-%m-%d', ])

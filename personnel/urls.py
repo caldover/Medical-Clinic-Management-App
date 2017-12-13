@@ -33,6 +33,9 @@ urlpatterns = [
     # url(r'add/$', views.PersonnelCreate.as_view(), name='personnel-add'),
     # url(r'add/$', views.physicianView, name='personnel-add'),
 
+    # /personnel/shift/
+    url(r'shift/$', views.get_shift_info, name='shift-add'),
+
     # /personnel/physicians/add/
     url(r'physicians/add/$', views.get_physician_info, name='physician-add'),
 

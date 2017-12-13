@@ -3,14 +3,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.db import transaction
-from .models import Personnel, Physician, Surgeon, Nurse
+from .models import Personnel, Physician, Surgeon, Nurse, Shift
 from localflavor.us.forms import USPhoneNumberField
 from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianFormSet
 #from .forms import PhysicianForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from .forms import PhysicianForm, SurgeonForm, NurseForm
+from .forms import PhysicianForm, SurgeonForm, NurseForm, ShiftForm
 
 
 
@@ -272,3 +272,26 @@ def get_nurse_info(request):
         form = NurseForm()
 
     return render(request, 'personnel/nurse_form.html', {'form': form})
+
+
+def get_shift_info(request):
+    if request.method == 'POST':
+        form = ShiftForm(request.POST)
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            employee_no = form.cleaned_data['employee_no']
+            date = form.cleaned_data['date']
+
+            shift = Shift(employee_no_id=employee_no , date=date)
+            shift.save()
+
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('personnel:index'))
+        else:
+            print(form.errors)
+
+    else:
+        form = ShiftForm()
+
+    return render(request, 'personnel/shift_form.html', {'form': form})

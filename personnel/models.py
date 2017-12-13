@@ -93,3 +93,9 @@ class Nurse(models.Model):
 
     def __str__(self):
         return str(self.employee_no)
+
+
+class Shift(models.Model):
+    date = models.DateField(primary_key=True)
+    employee_no = models.OneToOneField(Personnel, on_delete=models.CASCADE)
+    working_ind = models.BooleanField()
