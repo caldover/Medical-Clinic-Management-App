@@ -1,5 +1,5 @@
 {% extends 'personnel/base.html' %}
-{% block title %}Input Patient Information{% endblock %}
+{% block title %}Input Shift Information{% endblock %}
 {% block personnel_active %}active{% endblock %}
 
 {% block body %}
@@ -28,7 +28,11 @@
                             {% endfor %}
                         {% endif %}
 
-                        {{ form.as_P }}
+                        <select id="personnel">
+                            {% for personnel in all_personnel %}
+                                <option value="{{ personnel }}">{{ personnel }}</option>
+                            {% endfor %}
+                        </select>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
