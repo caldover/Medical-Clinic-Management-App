@@ -30,6 +30,6 @@ class PatientCreate(CreateView):
 class DetailView(generic.DetailView):
     model = Patient
     template_name = 'personnel/detail.html'
-    
+
     def get_queryset(self):
         return Patient.objects.all()
