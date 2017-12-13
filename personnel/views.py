@@ -282,7 +282,7 @@ def get_shift_info(request):
             employee_no = form.cleaned_data['employee_no']
             date = form.cleaned_data['date']
 
-            shift = Shift(employee_no_id=employee_no , date=date, working_ind=True)
+            shift = Shift(employee_no_id=employee_no.pk , date=date, working_ind=True)
             shift.save()
 
 

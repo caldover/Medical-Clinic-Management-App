@@ -65,9 +65,6 @@ class NurseForm(forms.Form):
 
 
 class ShiftForm(forms.Form):
-    personnel_obj = Personnel.objects.all()
-    personnel_ids = [obj.pk for obj in personnel_obj]
-
-    employee_no = forms.ModelChoiceField(label='Personnel Name', queryset=personnel_ids)
+    employee_no = forms.ModelChoiceField(label='Personnel Name', queryset=Personnel.objects.all())
     date = forms.DateField(label='Date', initial=datetime.date.today,
                                       input_formats=['%Y-%m-%d', ])
