@@ -27,12 +27,15 @@
                                     </div>
                             {% endfor %}
                         {% endif %}
-
+                        <p><label for="personnel">Personnel:</label>
                         <select id="personnel">
-                            {% for personnel in all_personnel %}
-                                <option value="{{ personnel }}">{{ personnel }}</option>
+                            {% for personnel in form %}
+                                <option value="{{ first_name }}">{{ first_name }}</option>
                             {% endfor %}
                         </select>
+                        </p>
+
+                        {{ form }}
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
