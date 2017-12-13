@@ -8,4 +8,6 @@ urlpatterns = [
     # /patient/
     url(r'^$', views.IndexView.as_view(), name='index'),
 
+    # /patients/add/
+    url(r'add/$', views.PatientCreate.as_view(), name='patient-add'),
 ]
