@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.db import transaction
-from .models import Personnel, Physician, Surgeon, Nurse, Shift
+from .models import Personnel, Physician, Surgeon, Nurse, Shift, Schedule
 from localflavor.us.forms import USPhoneNumberField
 from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianFormSet
@@ -285,6 +285,9 @@ def get_shift_info(request):
             shift = Shift(employee_no_id=employee_no.pk , date=date, working_ind=True)
             shift.save()
 
+            schedule = Schedule(employee_no_id=employee_no.pk , date=date, block1=False, block2=False, block3=False,
+                                block4=False, block5=False, block6=False, block7=False, block8=False)
+            schedule.save()
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:index'))

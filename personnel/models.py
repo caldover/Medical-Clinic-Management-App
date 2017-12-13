@@ -96,6 +96,20 @@ class Nurse(models.Model):
 
 
 class Shift(models.Model):
-    date = models.DateField(primary_key=True)
+    date = models.DateField()
     employee_no = models.OneToOneField(Personnel, on_delete=models.CASCADE)
     working_ind = models.BooleanField()
+
+
+class Schedule(models.Model):
+    #date = models.OneToOneField(Shift, on_delete=models.CASCADE)
+    #employee_no = models.OneToOneField(Shift, on_delete=models.CASCADE)
+    shift_no = models.OneToOneField(Shift, on_delete=models.CASCADE)
+    block1 = models.BooleanField()
+    block2 = models.BooleanField()
+    block3 = models.BooleanField()
+    block4 = models.BooleanField()
+    block5 = models.BooleanField()
+    block6 = models.BooleanField()
+    block7 = models.BooleanField()
+    block8 = models.BooleanField()
