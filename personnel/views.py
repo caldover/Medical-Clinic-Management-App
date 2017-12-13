@@ -14,10 +14,6 @@ from .forms import PhysicianForm, SurgeonForm, NurseForm
 
 
 
-class home(TemplateView):
-    template_name = 'cs631_project/home.html'
-
-
 class IndexView(generic.ListView):
     template_name = 'personnel/index.html'
     context_object_name = 'all_personnel'
