@@ -20,10 +20,10 @@ from django.views.generic.base import RedirectView
 from . import views
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(pattern_name='index', permanent=False), name='root-redir'),
+    url(r'^$', RedirectView.as_view(pattern_name='personnel.index', permanent=False), name='root-redir'),
     url(r'^admin/', admin.site.urls),
     url(r'^personnel/', include('personnel.urls')),
 
     # /physicians/add/
-    url(r'physicians/add/$', RedirectView.as_view(pattern_name='index', permanent=False), name='physician-add-redir'),
+    url(r'physicians/add/$', RedirectView.as_view(pattern_name='personnel.index', permanent=False), name='physician-add-redir'),
 ]
