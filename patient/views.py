@@ -25,3 +25,11 @@ class PatientCreate(CreateView):
     template_name = 'patient/patient_form.html'
     phone = USPhoneNumberField()
     fields = ['first_name', 'last_name', 'gender', 'address', 'phone', 'ssn', 'blood_type']
+
+
+class DetailView(generic.DetailView):
+    model = Patient
+    template_name = 'personnel/detail.html'
+    
+    def get_queryset(self):
+        return Patient.objects.all()
