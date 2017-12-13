@@ -285,7 +285,7 @@ def get_shift_info(request):
             shift = Shift(employee_no_id=employee_no.pk , date=date, working_ind=True)
             shift.save()
 
-            schedule = Schedule(shift_no_id=shift.id , date=date, block1=False, block2=False, block3=False,
+            schedule = Schedule(shift_no_id=shift.id , block1=False, block2=False, block3=False,
                                 block4=False, block5=False, block6=False, block7=False, block8=False)
             schedule.save()
 
