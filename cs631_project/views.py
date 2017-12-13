@@ -1,9 +1,9 @@
 from django.http import HttpResponse
-from django.views import generic
+from django.views.generic import TemplateView
 
 # def home(request):
 #     return HttpResponse("<h1>Welcome to the Newark Medical Associates Management System</h1>")
 
 
-class home(generic.ListView):
+class home(TemplateView):
     template_name = 'cs631_project/home.html'
