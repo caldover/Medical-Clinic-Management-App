@@ -30,12 +30,12 @@
                         <p><label for="personnel">Personnel:</label>
                         <select id="personnel">
                             {% for personnel in form %}
-                                <option value="{{ first_name }}">{{ first_name }}</option>
+                                <option value="{{ personnel.employee_no_id }}">{{ personnel.employee_no_id }}</option>
                             {% endfor %}
                         </select>
                         </p>
 
-                        {{ form }}
+                        {{ form.as_p }}
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
