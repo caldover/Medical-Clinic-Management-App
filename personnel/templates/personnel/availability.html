@@ -3,17 +3,21 @@
 
 {% block body %}
 
-    <h3>Doctor Availability</h3>
+    <h3>Availability for {{ object.employee_no_id }} on {{ object.date }}</h3>
 
+    {% if schedule %}
     <ul>
-        <li>9am - 10am: {{ object.block1 }}</li>
-        <li>10am - 10am: {{ object.block2 }}</li>
-        <li>11am - 10am: {{ object.block3 }}</li>
-        <li>12pm - 1pm: {{ object.block4 }}</li>
-        <li>1pm - 2pm: {{ object.block5 }}</li>
-        <li>2pm - 3pm: {{ object.block6 }}</li>
-        <li>3pm - 4pm: {{ object.block7 }}</li>
-        <li>4pm - 5pm: {{ object.block8 }}</li>
+        <li>9am - 10am: {{ schedule.block1 }}</li>
+        <li>10am - 10am: {{ schedule.block2 }}</li>
+        <li>11am - 10am: {{ schedule.block3 }}</li>
+        <li>12pm - 1pm: {{ schedule.block4 }}</li>
+        <li>1pm - 2pm: {{ schedule.block5 }}</li>
+        <li>2pm - 3pm: {{ schedule.block6 }}</li>
+        <li>3pm - 4pm: {{ schedule.block7 }}</li>
+        <li>4pm - 5pm: {{ schedule.block8 }}</li>
     </ul>
+    {% else %}
+    <h5> Not working today </h5>
+    {% endif %}
 
 {% endblock %}

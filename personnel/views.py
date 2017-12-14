@@ -301,8 +301,17 @@ def get_shift_info(request):
 
 
 class AvailView(generic.DetailView):
-    model = Schedule
+    model = Shift
     template_name = 'personnel/availability.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(AvailView, self).get_context_data(**kwargs)
+        try:
+            context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['pk'])
+        except Schedule.DoesNotExist:
+            context['schedule'] = None
+
+        return context
+
     def get_queryset(self):
-        return Schedule.objects.all()
+        return Shift.objects.all()
