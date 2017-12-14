@@ -70,7 +70,7 @@ class ShiftForm(forms.Form):
                                       input_formats=['%Y-%m-%d', ])
 
 
-class ShiftForm(forms.Form):
+class PhysicianGetShiftForm(forms.Form):
     employee_no = forms.ModelChoiceField(label='Physician Name', queryset=Physician.objects.all())
     date = forms.DateField(label='Date', initial=datetime.date.today,
                                       input_formats=['%Y-%m-%d', ])
