@@ -108,8 +108,6 @@ class Shift(models.Model):
 
 
 class Schedule(models.Model):
-    #date = models.OneToOneField(Shift, on_delete=models.CASCADE)
-    #employee_no = models.OneToOneField(Shift, on_delete=models.CASCADE)
     shift_no = models.OneToOneField(Shift, on_delete=models.CASCADE)
     block1 = models.BooleanField()
     block2 = models.BooleanField()
