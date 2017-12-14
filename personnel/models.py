@@ -104,7 +104,7 @@ class Shift(models.Model):
         unique_together = ('date', 'employee_no')
 
     def __str__(self):
-        return str(self.employee_no)
+        return str(self.date)
 
 
 class Schedule(models.Model):
