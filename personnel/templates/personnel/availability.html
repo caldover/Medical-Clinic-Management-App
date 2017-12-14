@@ -9,19 +9,53 @@
     <ul>
 
         {% if not schedule.block1 %}
-        <li>nopeeeeeee</li>
+        <li>9am - 10am: Available</li>
         {% else %}
-        <li>yepppp</li>
+        <li>9am - 10am: Not Available</li>
         {% endif %}
 
-        <li>9am - 10am: {{ schedule.block1 }}</li>
-        <li>10am - 10am: {{ schedule.block2 }}</li>
-        <li>11am - 10am: {{ schedule.block3 }}</li>
-        <li>12pm - 1pm: {{ schedule.block4 }}</li>
-        <li>1pm - 2pm: {{ schedule.block5 }}</li>
-        <li>2pm - 3pm: {{ schedule.block6 }}</li>
-        <li>3pm - 4pm: {{ schedule.block7 }}</li>
-        <li>4pm - 5pm: {{ schedule.block8 }}</li>
+        {% if not schedule.block1 %}
+        <li>10am - 11am: Available</li>
+        {% else %}
+        <li>10am - 11am: Not Available</li>
+        {% endif %}
+
+        {% if not schedule.block1 %}
+        <li>11am - 12pm: Available</li>
+        {% else %}
+        <li>11am - 12pm: Not Available</li>
+        {% endif %}
+
+        {% if not schedule.block1 %}
+        <li>12pm - 1pm: Available</li>
+        {% else %}
+        <li>12pm - 1pm: Not Available</li>
+        {% endif %}
+
+        {% if not schedule.block1 %}
+        <li>1pm - 2pm: Available</li>
+        {% else %}
+        <li>1pm - 2pm: Not Available</li>
+        {% endif %}
+
+        {% if not schedule.block1 %}
+        <li>2pm - 3pm: Available</li>
+        {% else %}
+        <li>2pm - 3pm: Not Available</li>
+        {% endif %}
+
+        {% if not schedule.block1 %}
+        <li>3pm - 4pm: Available</li>
+        {% else %}
+        <li>3pm - 4pm: Not Available</li>
+        {% endif %}
+
+        {% if not schedule.block1 %}
+        <li>4pm - 5pm: Available</li>
+        {% else %}
+        <li>4pm - 5pm: Not Available</li>
+        {% endif %}
+
     </ul>
     {% else %}
     <h5> Not working today </h5>
