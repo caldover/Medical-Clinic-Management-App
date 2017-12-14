@@ -103,6 +103,9 @@ class Shift(models.Model):
     class Meta:
         unique_together = ('date', 'employee_no')
 
+    def __str__(self):
+        return str(self.employee_no)
+
 
 class Schedule(models.Model):
     #date = models.OneToOneField(Shift, on_delete=models.CASCADE)
