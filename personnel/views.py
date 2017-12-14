@@ -10,7 +10,7 @@ from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
-from .forms import PhysicianForm, SurgeonForm, NurseForm, ShiftForm
+from .forms import PhysicianForm, SurgeonForm, NurseForm, ShiftForm, PhysicianGetShiftForm
 
 
 
@@ -298,6 +298,32 @@ def get_shift_info(request):
         form = ShiftForm()
 
     return render(request, 'personnel/shift_form.html', {'form': form})
+
+
+def get_appointment_info(request):
+    if request.method == 'POST':
+        form = PhysicianGetShiftForm(request.POST)
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            employee_no = form.cleaned_data['employee_no']
+            date = form.cleaned_data['date']
+            block = form.cleaned_data['block']
+
+            shift = Shift.objects.get(employee_no_id=employee_no, date=date)
+
+            schedule = Schedule.objects.get(id=shift.id)
+
+            schedule.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('personnel:index'))
+        else:
+            print(form.errors)
+
+    else:
+        form = PhysicianGetShiftForm()
+
+    return render(request, 'personnel/get_physician_shift_form.html', {'form': form})
 
 
 class AvailView(generic.DetailView):

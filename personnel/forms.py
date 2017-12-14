@@ -1,7 +1,7 @@
 # from django.forms import ModelForm, inlineformset_factory
 from django import forms
 from localflavor.us.forms import USPhoneNumberField
-from .models import Personnel, Physician
+from .models import Personnel, Physician, Shift, Schedule
 import datetime
 
 #
@@ -72,5 +72,8 @@ class ShiftForm(forms.Form):
 
 class PhysicianGetShiftForm(forms.Form):
     employee_no = forms.ModelChoiceField(label='Physician Name', queryset=Physician.objects.all())
-    date = forms.DateField(label='Date', initial=datetime.date.today,
-                                      input_formats=['%Y-%m-%d', ])
+    date = forms.ModelChoiceField(label='Available Dates', queryset=Shift.objects.get(employee_no_id=employee_no))
+
+    choices = [(i, i) for i in Schedule.get_all_field_names()]
+    block = forms.ChoiceField(label='Available Hours', choices=choices)
+
