@@ -300,7 +300,7 @@ def get_shift_info(request):
     return render(request, 'personnel/shift_form.html', {'form': form})
 
 
-def get_appointment_info(request):
+def get_physician_shift_info(request):
     if request.method == 'POST':
         form = PhysicianGetShiftForm(request.POST)
         if form.is_valid():
