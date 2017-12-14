@@ -7,6 +7,13 @@
 
     {% if schedule %}
     <ul>
+
+        {% if not schedule.block1 %}
+        <li>nopeeeeeee</li>
+        {% else %}
+        <li>yepppp</li>
+        {% endif %}
+
         <li>9am - 10am: {{ schedule.block1 }}</li>
         <li>10am - 10am: {{ schedule.block2 }}</li>
         <li>11am - 10am: {{ schedule.block3 }}</li>
