@@ -309,7 +309,8 @@ class AvailView(generic.DetailView):
         obj = get_object_or_404(
             self.model,
             employee_no_id=self.kwargs['employee_no_id'],
-            pub_date__date=self.kwargs['date'])
+            #pub_date__date=self.kwargs['date'])
+            date=self.kwargs['date'])
 
         return obj
 
