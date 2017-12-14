@@ -72,10 +72,5 @@ class ShiftForm(forms.Form):
 
 class PhysicianGetShiftForm(forms.Form):
     employee_no = forms.ModelChoiceField(label='Physician Name', queryset=Physician.objects.all())
-    #date = forms.ModelChoiceField(label='Available Dates', queryset=Shift.objects.all())
-
-    dates = Shift.objects.get(employee_no_id=employee_no.id)
-
-    choices = [(i, i) for i in dates]
-    date = forms.ChoiceField(label='Available Hours', choices=choices)
+    date = forms.ModelChoiceField(label='Available Dates', queryset=Shift.objects.all())
 
