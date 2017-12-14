@@ -317,7 +317,8 @@ class AvailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(AvailView, self).get_context_data(**kwargs)
         try:
-            context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
+            #context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
+            context['schedule'] = Schedule.objects.all()
         except Schedule.DoesNotExist:
             context['schedule'] = None
 
