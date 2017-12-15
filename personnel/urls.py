@@ -24,9 +24,6 @@ urlpatterns = [
     # url(r'physicians/^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'physicians/^(?P<pk>[0-9]+)/$', RedirectView.as_view(pattern_name='detail', permanent=False), name='physician_detail'),
 
-    # /personnel/physicians/availability/employee_no/
-    url(r'physicians/availability/^(?P<pk>[0-9]+)/$', views.ShiftDetailView.as_view(), name='physician_dates'),
-
     # /personnel/shift/
     url(r'shift/$', views.get_shift_info, name='shift-add'),
 
