@@ -312,7 +312,7 @@ def get_physician_shift_info(request):
             #shift = Shift.objects.get(employee_no_id=employee_no)
 
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('personnel:physician_dates', args=(employee_no)))
+            return HttpResponseRedirect(reverse('personnel:physician_dates', args=(employee_no.pk)))
         else:
             print(form.errors)
 
