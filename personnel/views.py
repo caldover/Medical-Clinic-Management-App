@@ -337,7 +337,7 @@ class DatesDetailView(generic.DetailView):
         return context
 
     def get_queryset(self):
-        return Shift.objects.all()
+        return Personnel.objects.all()
 
 
 class AvailView(generic.DetailView):
