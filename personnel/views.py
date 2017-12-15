@@ -306,8 +306,8 @@ def get_physician_shift_info(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required
             employee_no = form.cleaned_data['employee_no']
-            date = form.cleaned_data['date']
-            block = form.cleaned_data['block']
+            #date = form.cleaned_data['date']
+            #block = form.cleaned_data['block']
 
             shift = Shift.objects.get(employee_no_id=employee_no, date=date)
 
