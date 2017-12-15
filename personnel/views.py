@@ -309,14 +309,10 @@ def get_physician_shift_info(request):
             #date = form.cleaned_data['date']
             #block = form.cleaned_data['block']
 
-            shift = Shift.objects.get(employee_no_id=employee_no, date=date)
-
-            schedule = Schedule.objects.get(id=shift.id)
-
-            schedule.save()
+            shift = Shift.objects.get(employee_no_id=employee_no)
 
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('personnel:index'))
+            return HttpResponseRedirect(reverse('personnel:physician_dates', args=(employee_no)))
         else:
             print(form.errors)
 
@@ -324,6 +320,23 @@ def get_physician_shift_info(request):
         form = PhysicianGetShiftForm()
 
     return render(request, 'personnel/get_physician_shift_form.html', {'form': form})
+
+
+class DatesDetailView(generic.DetailView):
+    model = Personnel
+    template_name = 'personnel/shift_dates.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DatesDetailView, self).get_context_data(**kwargs)
+        try:
+            context['all_dates'] = Shift.objects.get(employee_no_id=self.kwargs['pk'])
+        except Physician.DoesNotExist:
+            context['all_dates'] = None
+
+        return context
+
+    def get_queryset(self):
+        return Shift.objects.all()
 
 
 class AvailView(generic.DetailView):
