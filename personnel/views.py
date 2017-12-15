@@ -331,7 +331,7 @@ class DatesDetailView(generic.DetailView):
         context = super(DatesDetailView, self).get_context_data(**kwargs)
         try:
             context['all_dates'] = Shift.objects.get(employee_no_id=self.kwargs['pk'])
-        except Physician.DoesNotExist:
+        except Shift.DoesNotExist:
             context['all_dates'] = None
 
         return context
