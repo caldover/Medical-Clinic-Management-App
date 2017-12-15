@@ -330,7 +330,7 @@ class DatesDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(DatesDetailView, self).get_context_data(**kwargs)
         try:
-            context['all_dates'] = Shift.objects.get(employee_no_id=self.kwargs['pk'])
+            context['all_dates'] = Shift.objects.filter(employee_no_id=self.kwargs['pk'])
         except Shift.DoesNotExist:
             context['all_dates'] = None
 

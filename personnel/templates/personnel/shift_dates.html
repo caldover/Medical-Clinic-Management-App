@@ -6,10 +6,10 @@
     {% if all_dates %}
         <ol>
             {% for date in all_dates %}
-            <li><a href="{% url 'personnel:physician_dates' personnel.id %}">{{ personnel.first_name }} {{ personnel.last_name }}</a></li>
+            <li><a href="#">{{ date.date }}</a></li>
             {% endfor %}
         </ol>
     {% else %}
-        <h5>No personnel registered</h5>
+        <h5>No dates available</h5>
     {% endif %}
 {% endblock %}
