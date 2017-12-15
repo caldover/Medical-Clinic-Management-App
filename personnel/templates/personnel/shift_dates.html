@@ -6,7 +6,7 @@
     {% if all_dates %}
         <ol>
             {% for date in all_dates %}
-            <li><a href="#">{{ date.date }}</a></li>
+            <li><a href="{% url 'personnel:physician_avail' date.date %}">{{ date.date }}</a></li>
             {% endfor %}
         </ol>
     {% else %}
