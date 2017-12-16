@@ -336,7 +336,7 @@ def get_physician_shift_info(request):
 #         return Personnel.objects.all()
 
 
-def get_physician_date(request):
+def get_physician_date(request, pk):
     if request.method == 'POST':
         form = PhysicianGetDateForm(request.POST)
         if form.is_valid():
