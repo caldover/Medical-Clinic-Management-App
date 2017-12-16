@@ -334,10 +334,10 @@ class DatesDetailView(generic.DetailView):
         return Personnel.objects.all()
 
 
-# class AvailView(generic.DetailView):
-#     model = Shift
-#     template_name = 'personnel/availability.html'
-#
+class AvailView(generic.DetailView):
+    model = Shift
+    template_name = 'personnel/availability.html'
+
     # def get_object(self):
     #
     #     obj = get_object_or_404(
@@ -347,29 +347,29 @@ class DatesDetailView(generic.DetailView):
     #         date=self.kwargs['date'])
     #
     #     return obj
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super(AvailView, self).get_context_data(**kwargs)
-    #     try:
-    #         #context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
-    #         context['schedule'] = Schedule.objects.all()
-    #     except Schedule.DoesNotExist:
-    #         context['schedule'] = None
-    #
-    #     return context
-    #
-    # def get_queryset(self):
-    #     return Shift.objects.all()
 
-def get_appointment_selection(request):
-    if request.method == 'POST':
-        form = PhysicianSelectTimeForm(request.POST)
-        if form.is_valid():
-            block = form.cleaned_data['block']
-            # redirect to a new URL:
-            return HttpResponseRedirect(reverse('personnel:index'))
-        else:
-            print(form.errors)
-    else:
-        form = PhysicianSelectTimeForm()
-    return render(request, 'personnel/availability.html', {'form': form})
+    def get_context_data(self, **kwargs):
+        context = super(AvailView, self).get_context_data(**kwargs)
+        try:
+            #context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
+            context['schedule'] = Schedule.objects.all()
+        except Schedule.DoesNotExist:
+            context['schedule'] = None
+
+        return context
+
+    def get_queryset(self):
+        return Shift.objects.all()
+
+# def get_appointment_selection(request):
+#     if request.method == 'POST':
+#         form = PhysicianSelectTimeForm(request.POST)
+#         if form.is_valid():
+#             block = form.cleaned_data['block']
+#             # redirect to a new URL:
+#             return HttpResponseRedirect(reverse('personnel:index'))
+#         else:
+#             print(form.errors)
+#     else:
+#         form = PhysicianSelectTimeForm()
+#     return render(request, 'personnel/availability.html', {'form': form})

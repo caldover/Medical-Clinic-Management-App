@@ -37,8 +37,8 @@ urlpatterns = [
     url(r'physicians/availability/(?P<pk>[0-9]+)/$', views.DatesDetailView.as_view(), name='physician_dates'),
 
     # /personnel/physicians/availability/employee_no/date/
-    #url(r'physicians/availability/(?P<employee_no_id>\d+)/(?P<date>\d{4}-\d{2}-\d{2})/$', views.AvailView.as_view(), name='physician_avail'),
-    url(r'physicians/availability/(?P<employee_no_id>\d+)/(?P<date>\d{4}-\d{2}-\d{2})/$', views.get_appointment_selection, name='physician_avail'),
+    url(r'physicians/availability/(?P<employee_no_id>\d+)/(?P<date>\d{4}-\d{2}-\d{2})/$', views.AvailView.as_view(), name='physician_avail'),
+    #url(r'physicians/availability/(?P<employee_no_id>\d+)/(?P<date>\d{4}-\d{2}-\d{2})/$', views.get_appointment_selection, name='physician_avail'),
 
     # /personnel/surgeons/add/
     url(r'surgeons/add/$', views.get_surgeon_info, name='surgeon-add'),
