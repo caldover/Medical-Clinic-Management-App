@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.db import transaction
-from .models import Personnel, Physician, Surgeon, Nurse, Shift, Schedule
+from .models import Personnel, Physician, Surgeon, Nurse, Shift, Schedule, TimeBlock
 from localflavor.us.forms import USPhoneNumberField
 from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianFormSet
@@ -290,6 +290,31 @@ def get_shift_info(request):
             schedule = Schedule(shift_no_id=shift.id , block1=False, block2=False, block3=False,
                                 block4=False, block5=False, block6=False, block7=False, block8=False)
             schedule.save()
+
+            time_block1 = TimeBlock(shift_no_id=shift.id, time=' 9am - 10am' , attending=False)
+            time_block1.save()
+
+            time_block2 = TimeBlock(shift_no_id=shift.id, time='10am - 11am', attending=False)
+            time_block2.save()
+
+            time_block3 = TimeBlock(shift_no_id=shift.id, time='11am - 12pm', attending=False)
+            time_block3.save()
+
+            time_block4 = TimeBlock(shift_no_id=shift.id, time='12pm -  1pm', attending=False)
+            time_block4.save()
+
+            time_block5 = TimeBlock(shift_no_id=shift.id, time=' 1pm -  2pm', attending=False)
+            time_block5.save()
+
+            time_block6 = TimeBlock(shift_no_id=shift.id, time=' 2pm -  3pm', attending=False)
+            time_block6.save()
+
+            time_block7 = TimeBlock(shift_no_id=shift.id, time=' 3pm -  4pm', attending=False)
+            time_block7.save()
+
+            time_block8 = TimeBlock(shift_no_id=shift.id, time=' 4pm -  5pm', attending=False)
+            time_block8.save()
+
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:index'))
