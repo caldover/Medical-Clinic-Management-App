@@ -115,14 +115,14 @@ class PhysicianSelectTimeForm(forms.Form):
     # if not block8:
     #     block_choices.append(block8)
 
-    block1 = Schedule.objects.only("block1")
-    block_choices.append(block1)
+    #block1 = Schedule.objects.only("block1")
+    block_choices.append('block1')
 
-    block2 = Schedule.objects.only("block2")
-    block_choices.append(block2)
+    #block2 = Schedule.objects.only("block2")
+    block_choices.append('block2')
 
-    block3 = Schedule.objects.only("block3")
-    block_choices.append(block3)
+    #block3 = Schedule.objects.only("block3")
+    block_choices.append('block3')
 
     block = forms.ChoiceField(choices=block_choices)
 
