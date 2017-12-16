@@ -369,7 +369,8 @@ def get_physician_date(request, pk):
             date_obj = form.cleaned_data['date']
             values.current_date = date_obj.date.strftime('%Y-%m-%d')
 
-            shift = Shift.objects.get(date=values.current_date, employee_no_id=values.current_physician)
+            #shift = Shift.objects.get(date=values.current_date, employee_no_id=values.current_physician)
+            shift = Shift.objects.get(date=values.current_date, employee_no_id=pk)
             values.current_shift = shift.pk
 
             # redirect to a new URL:
