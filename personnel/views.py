@@ -389,6 +389,7 @@ def get_appointment_selection(request, employee_no_id, date):
         if form.is_valid():
             block = form.cleaned_data['block']
             shift = Shift.objects.get(date=values.dates, employee_no_id=values.current_physician)
+            values.current_shift = shift
             schedule = Schedule.objects.get(shift_no_id=shift.pk)
             schedule.block = True
             schedule.save()

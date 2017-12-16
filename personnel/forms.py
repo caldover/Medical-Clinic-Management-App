@@ -81,41 +81,43 @@ class PhysicianGetDateForm(forms.Form):
 
 
 class PhysicianSelectTimeForm(forms.Form):
-    block_choices = []
+    # block_choices = []
+    #
+    # block1 = Schedule.objects.only("block1")
+    # if not block1:
+    #     block_choices.append(('block1', ' 9am - 10am'))
+    #
+    # block2 = Schedule.objects.only("block2")
+    # if not block2:
+    #     block_choices.append(('block2', '10am - 11am'))
+    #
+    # block3 = Schedule.objects.only("block3")
+    # if not block3:
+    #     block_choices.append(('block3', '11am - 12pm'))
+    #
+    # block4 = Schedule.objects.only("block4")
+    # if not block4:
+    #     block_choices.append(('block4', '12pm -  1pm'))
+    #
+    # block5 = Schedule.objects.only("block5")
+    # if not block5:
+    #     block_choices.append(('block5', ' 1pm -  2pm'))
+    #
+    # block6 = Schedule.objects.only("block6")
+    # if not block6:
+    #     block_choices.append(('block6', ' 2pm -  3pm'))
+    #
+    # block7 = Schedule.objects.only("block7")
+    # if not block7:
+    #     block_choices.append(('block7', ' 3pm -  4pm'))
+    #
+    # block8 = Schedule.objects.only("block8")
+    # if not block8:
+    #     block_choices.append(('block8', ' 4pm -  5pm'))
+    #
+    #
+    # block = forms.ChoiceField(choices=block_choices)
 
-    block1 = Schedule.objects.only("block1")
-    if not block1:
-        block_choices.append(('block1', ' 9am - 10am'))
-
-    block2 = Schedule.objects.only("block2")
-    if not block2:
-        block_choices.append(('block2', '10am - 11am'))
-
-    block3 = Schedule.objects.only("block3")
-    if not block3:
-        block_choices.append(('block3', '11am - 12pm'))
-
-    block4 = Schedule.objects.only("block4")
-    if not block4:
-        block_choices.append(('block4', '12pm -  1pm'))
-
-    block5 = Schedule.objects.only("block5")
-    if not block5:
-        block_choices.append(('block5', ' 1pm -  2pm'))
-
-    block6 = Schedule.objects.only("block6")
-    if not block6:
-        block_choices.append(('block6', ' 2pm -  3pm'))
-
-    block7 = Schedule.objects.only("block7")
-    if not block7:
-        block_choices.append(('block7', ' 3pm -  4pm'))
-
-    block8 = Schedule.objects.only("block8")
-    if not block8:
-        block_choices.append(('block8', ' 4pm -  5pm'))
-
-
-    block = forms.ChoiceField(choices=block_choices)
+    time = forms.ModelChoiceField(label='Time', queryset=Schedule.objects.filter(shift_no_id=values.current_shift))
 
 
