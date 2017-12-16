@@ -1,7 +1,7 @@
 # from django.forms import ModelForm, inlineformset_factory
 from django import forms
 from localflavor.us.forms import USPhoneNumberField
-from .models import Personnel, Physician, Shift, Schedule
+from .models import Personnel, Physician, Shift, Schedule, TimeBlock
 from . import views
 import datetime
 from . import values
@@ -118,6 +118,6 @@ class PhysicianSelectTimeForm(forms.Form):
     #
     # block = forms.ChoiceField(choices=block_choices)
 
-    time = forms.ModelChoiceField(label='Time', queryset=Schedule.objects.only("block1", "block2", "block3")) #.filter(shift_no_id=values.current_shift)
+    time = forms.ModelChoiceField(label='Time', queryset=TimeBlock.objects.filter(shift_no_id=values.current_shift))
 
 
