@@ -118,6 +118,6 @@ class PhysicianSelectTimeForm(forms.Form):
     #
     # block = forms.ChoiceField(choices=block_choices)
 
-    time = forms.ModelChoiceField(label='Time', queryset=Schedule.objects.filter(shift_no_id=values.current_shift).only("block1", "block2", "block3"))
+    time = forms.ModelChoiceField(label='Time', queryset=Schedule.objects.only("block1", "block2", "block3").filter(shift_no_id=values.current_shift))
 
 
