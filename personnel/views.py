@@ -11,10 +11,9 @@ from extra_views import CreateWithInlinesView, InlineFormSet
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from .forms import PhysicianForm, SurgeonForm, NurseForm, ShiftForm, PhysicianGetShiftForm, PhysicianSelectTimeForm, PhysicianGetDateForm
+from . import values
 
 
-
-current_physician = None
 
 class IndexView(generic.ListView):
     template_name = 'personnel/index.html'
@@ -307,8 +306,7 @@ def get_physician_shift_info(request):
         form = PhysicianGetShiftForm(request.POST)
         if form.is_valid():
             employee_no = form.cleaned_data['employee_no']
-            global current_physician
-            current_physician = employee_no.pk
+            values.current_physician = employee_no.pk
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:physician_dates', args=[employee_no.pk]))

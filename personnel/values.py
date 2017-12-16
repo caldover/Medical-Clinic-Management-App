@@ -1,1 +1,1 @@
-personnel = "this guy"
+personnel = None
