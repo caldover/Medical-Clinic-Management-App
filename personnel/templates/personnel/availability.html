@@ -12,50 +12,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
 
-                        {% if schedule %}
-                        <form class="form-horizontal" action="/personnel/" method="post" enctype="multipart/form-data">
+                    {{ form.as_p }}
 
-                            <h4>Select a time for your appointment:</h4>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
 
-                            {% if not schedule.block1 %}
-                            <p><input type="radio" name="block" value="block1"> 9am - 10am</p>
-                            {% endif %}
-
-                            {% if not schedule.block2 %}
-                            <p><input type="radio" name="block" value="block2">10am - 11am</p>
-                            {% endif %}
-
-                            {% if not schedule.block3 %}
-                            <p><input type="radio" name="block" value="block3">11am - 12pm</p>
-                            {% endif %}
-
-                            {% if not schedule.block4 %}
-                            <p><input type="radio" name="block" value="block4">12pm -  1pm</p>
-                            {% endif %}
-
-                            {% if not schedule.block5 %}
-                            <p><input type="radio" name="block" value="block5"> 1pm -  2pm</p>
-                            {% endif %}
-
-                            {% if not schedule.block6 %}
-                            <p><input type="radio" name="block" value="block6"> 2pm -  3pm</p>
-                            {% endif %}
-
-                            {% if not schedule.block7 %}
-                            <p><input type="radio" name="block" value="block7"> 3pm -  4pm</p>
-                            {% endif %}
-
-                            {% if not schedule.block8 %}
-                            <p><input type="radio" name="block" value="block8"> 4pm -  5pm</p>
-                            {% endif %}
-
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </div>
-
-                        </form>
                 </div>
             </div>
         </div>
