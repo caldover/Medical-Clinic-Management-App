@@ -343,7 +343,7 @@ def get_physician_date(request, pk):
             date = form.cleaned_data['date']
             values.current_date = date
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('personnel:physician_dates', args=[date]))
+            return HttpResponseRedirect(reverse('personnel:physician_avail', args=[date, values.current_physician]))
         else:
             print(form.errors)
 
