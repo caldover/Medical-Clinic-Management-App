@@ -340,10 +340,10 @@ def get_physician_date(request, pk):
     if request.method == 'POST':
         form = PhysicianGetDateForm(request.POST)
         if form.is_valid():
-            date = form.cleaned_data['date']
-            values.current_date = date
+            date_obj = form.cleaned_data['date']
+            values.current_date = date_obj.date
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('personnel:physician_avail', args=[date, values.current_physician]))
+            return HttpResponseRedirect(reverse('personnel:physician_avail', args=[values.current_date, values.current_physician]))
         else:
             print(form.errors)
 
