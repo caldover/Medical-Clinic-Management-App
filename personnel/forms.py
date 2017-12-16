@@ -2,6 +2,7 @@
 from django import forms
 from localflavor.us.forms import USPhoneNumberField
 from .models import Personnel, Physician, Shift, Schedule
+from . import views
 import datetime
 
 #
@@ -76,8 +77,7 @@ class PhysicianGetShiftForm(forms.Form):
 
 
 class PhysicianGetDateForm(forms.Form):
-    global current_physician
-    date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=current_physician))
+    date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=views.current_physician))
 
 
 class PhysicianSelectTimeForm(forms.Form):
