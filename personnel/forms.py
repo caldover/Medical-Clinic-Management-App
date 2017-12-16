@@ -4,7 +4,7 @@ from localflavor.us.forms import USPhoneNumberField
 from .models import Personnel, Physician, Shift, Schedule
 from . import views
 import datetime
-
+from . import values
 #
 #
 # class PersonnelForm(ModelForm):
@@ -77,7 +77,7 @@ class PhysicianGetShiftForm(forms.Form):
 
 
 class PhysicianGetDateForm(forms.Form):
-    date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=views.current_physician))
+    date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=values.personnel))
 
 
 class PhysicianSelectTimeForm(forms.Form):
