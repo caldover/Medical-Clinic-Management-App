@@ -347,7 +347,7 @@ def get_physician_date(request, pk):
         else:
             print(form.errors)
 
-        else:
+    else:
         form = PhysicianGetDateForm()
 
     return render(request, 'personnel/physician_dates.html', {'form': form})
