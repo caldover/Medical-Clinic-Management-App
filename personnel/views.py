@@ -10,9 +10,11 @@ from extra_views import CreateWithInlinesView, InlineFormSet
 #from .forms import PhysicianForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
-from .forms import PhysicianForm, SurgeonForm, NurseForm, ShiftForm, PhysicianGetShiftForm, PhysicianSelectTimeForm
+from .forms import PhysicianForm, SurgeonForm, NurseForm, ShiftForm, PhysicianGetShiftForm, PhysicianSelectTimeForm, PhysicianGetDateForm
 
 
+
+current_physician = None
 
 class IndexView(generic.ListView):
     template_name = 'personnel/index.html'
@@ -305,6 +307,8 @@ def get_physician_shift_info(request):
         form = PhysicianGetShiftForm(request.POST)
         if form.is_valid():
             employee_no = form.cleaned_data['employee_no']
+            global current_physician
+            current_physician = employee_no.pk
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:physician_dates', args=[employee_no.pk]))
@@ -317,59 +321,72 @@ def get_physician_shift_info(request):
     return render(request, 'personnel/get_physician_shift_form.html', {'form': form})
 
 
-class DatesDetailView(generic.DetailView):
-    model = Personnel
-    template_name = 'personnel/shift_dates.html'
+# class DatesDetailView(generic.DetailView):
+#     model = Personnel
+#     template_name = 'personnel/shift_dates.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(DatesDetailView, self).get_context_data(**kwargs)
+#         try:
+#             context['all_dates'] = Shift.objects.filter(employee_no_id=self.kwargs['pk'])
+#         except Shift.DoesNotExist:
+#             context['all_dates'] = None
+#
+#         return context
+#
+#     def get_queryset(self):
+#         return Personnel.objects.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(DatesDetailView, self).get_context_data(**kwargs)
-        try:
-            context['all_dates'] = Shift.objects.filter(employee_no_id=self.kwargs['pk'])
-        except Shift.DoesNotExist:
-            context['all_dates'] = None
 
-        return context
-
-    def get_queryset(self):
-        return Personnel.objects.all()
+def get_physician_date(request):
+    if request.method == 'POST':
+        form = PhysicianGetDateForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data['date']
+            return
 
 
-class AvailView(generic.DetailView):
-    model = Shift
-    template_name = 'personnel/availability.html'
 
-    def get_object(self):
+# class AvailView(generic.DetailView):
+#     model = Shift
+#     template_name = 'personnel/availability.html'
+#
+#     def get_object(self):
+#
+#         obj = get_object_or_404(
+#             self.model,
+#             employee_no_id=self.kwargs['employee_no_id'],
+#             #pub_date__date=self.kwargs['date'])
+#             date=self.kwargs['date'])
+#
+#         return obj
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(AvailView, self).get_context_data(**kwargs)
+#         try:
+#             #context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
+#             context['schedule'] = Schedule.objects.all()
+#         except Schedule.DoesNotExist:
+#             context['schedule'] = None
+#
+#         return context
+#
+#     def get_queryset(self):
+#         return Shift.objects.all()
 
-        obj = get_object_or_404(
-            self.model,
-            employee_no_id=self.kwargs['employee_no_id'],
-            #pub_date__date=self.kwargs['date'])
-            date=self.kwargs['date'])
 
-        return obj
-
-    def get_context_data(self, **kwargs):
-        context = super(AvailView, self).get_context_data(**kwargs)
-        try:
-            #context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
-            context['schedule'] = Schedule.objects.all()
-        except Schedule.DoesNotExist:
-            context['schedule'] = None
-
-        return context
-
-    def get_queryset(self):
-        return Shift.objects.all()
-
-# def get_appointment_selection(request):
-#     if request.method == 'POST':
-#         form = PhysicianSelectTimeForm(request.POST)
-#         if form.is_valid():
-#             block = form.cleaned_data['block']
-#             # redirect to a new URL:
-#             return HttpResponseRedirect(reverse('personnel:index'))
-#         else:
-#             print(form.errors)
-#     else:
-#         form = PhysicianSelectTimeForm()
-#     return render(request, 'personnel/availability.html', {'form': form})
+def get_appointment_selection(request):
+    if request.method == 'POST':
+        form = PhysicianSelectTimeForm(request.POST)
+        if form.is_valid():
+            block = form.cleaned_data['block']
+            global current_physician
+            shift = Shift.objects.filter(employee_no_id=current_physician)
+            schedule = Schedule.objects.filter()
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('personnel:index'))
+        else:
+            print(form.errors)
+    else:
+        form = PhysicianSelectTimeForm()
+    return render(request, 'personnel/availability.html', {'form': form})
