@@ -116,13 +116,13 @@ class PhysicianSelectTimeForm(forms.Form):
     #     block_choices.append(block8)
 
     #block1 = Schedule.objects.only("block1")
-    block_choices.append('block1')
+    block_choices.append(('block1', ' 9am - 10am'))
 
     #block2 = Schedule.objects.only("block2")
-    block_choices.append('block2')
+    block_choices.append(('block2', '10am - 11am'))
 
     #block3 = Schedule.objects.only("block3")
-    block_choices.append('block3')
+    block_choices.append(('block3', '11am - 12pm'))
 
     block = forms.ChoiceField(choices=block_choices)
 
