@@ -1,0 +1,7 @@
+{% extends 'personnel/base.html' %}
+{% block title %}All Available Dates{% endblock %}
+
+{% block body %}
+    <h3>All Available Dates for {{ personnel.first_name }} {{ personnel.last_name }}:</h3>
+    {{ form.as_p }}
+{% endblock %}

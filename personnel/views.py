@@ -341,7 +341,16 @@ def get_physician_date(request, pk):
         form = PhysicianGetDateForm(request.POST)
         if form.is_valid():
             date = form.cleaned_data['date']
-            return
+            values.date = date
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('personnel:physician_dates', args=[date]))
+        else:
+            print(form.errors)
+
+        else:
+        form = PhysicianGetDateForm()
+
+    return render(request, 'personnel/physician_dates.html', {'form': form})
 
 
 
