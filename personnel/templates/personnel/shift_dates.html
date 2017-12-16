@@ -2,7 +2,7 @@
 {% block title %}All Available Dates{% endblock %}
 
 {% block body %}
-    <h3>All Available Dates for {{ personnel.first }} {{ personnel.last }:</h3>
+    <h3>All Available Dates for {{ personnel.first }} {{ personnel.last }}:</h3>
     {% if all_dates %}
         <ol>
             {% for date in all_dates %}
