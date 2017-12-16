@@ -345,32 +345,32 @@ def get_physician_date(request):
 
 
 
-# class AvailView(generic.DetailView):
-#     model = Shift
-#     template_name = 'personnel/availability.html'
-#
-#     def get_object(self):
-#
-#         obj = get_object_or_404(
-#             self.model,
-#             employee_no_id=self.kwargs['employee_no_id'],
-#             #pub_date__date=self.kwargs['date'])
-#             date=self.kwargs['date'])
-#
-#         return obj
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(AvailView, self).get_context_data(**kwargs)
-#         try:
-#             #context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
-#             context['schedule'] = Schedule.objects.all()
-#         except Schedule.DoesNotExist:
-#             context['schedule'] = None
-#
-#         return context
-#
-#     def get_queryset(self):
-#         return Shift.objects.all()
+class AvailView(generic.DetailView):
+    model = Shift
+    template_name = 'personnel/availability.html'
+
+    def get_object(self):
+
+        obj = get_object_or_404(
+            self.model,
+            employee_no_id=self.kwargs['employee_no_id'],
+            #pub_date__date=self.kwargs['date'])
+            date=self.kwargs['date'])
+
+        return obj
+
+    def get_context_data(self, **kwargs):
+        context = super(AvailView, self).get_context_data(**kwargs)
+        try:
+            #context['schedule'] = Schedule.objects.get(shift_no_id=self.kwargs['id'])
+            context['schedule'] = Schedule.objects.all()
+        except Schedule.DoesNotExist:
+            context['schedule'] = None
+
+        return context
+
+    def get_queryset(self):
+        return Shift.objects.all()
 
 
 def get_appointment_selection(request):
