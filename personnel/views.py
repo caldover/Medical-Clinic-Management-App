@@ -365,12 +365,14 @@ def get_physician_shift_info(request):
 def get_physician_date(request, pk):
     if request.method == 'POST':
         form = PhysicianGetDateForm(request.POST, employee_no_id=pk)
+        print(values.current_physician)
+        print(pk)
         if form.is_valid():
             date_obj = form.cleaned_data['date']
             values.current_date = date_obj.date.strftime('%Y-%m-%d')
 
-            #shift = Shift.objects.get(date=values.current_date, employee_no_id=values.current_physician)
-            shift = Shift.objects.get(date=values.current_date, employee_no_id=pk)
+            shift = Shift.objects.get(date=values.current_date, employee_no_id=values.current_physician)
+            #shift = Shift.objects.get(date=values.current_date, employee_no_id=pk)
             values.current_shift = shift.pk
 
             # redirect to a new URL:
