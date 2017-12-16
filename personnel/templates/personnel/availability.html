@@ -6,57 +6,47 @@
     <h3>Availability on {{ object.date }}</h3>
 
     {% if schedule %}
-    <ul>
+    <form action="">
 
         {% if not schedule.block1 %}
-        <li>9am - 10am: Available</li>
-        {% else %}
-        <li>9am - 10am: Not Available</li>
+        <input type="radio" name="block" value="block1"> 9am - 10am<br>
         {% endif %}
 
-        {% if not schedule.block1 %}
-        <li>10am - 11am: Available</li>
-        {% else %}
-        <li>10am - 11am: Not Available</li>
+        {% if not schedule.block2 %}
+        <input type="radio" name="block" value="block2">10am - 11am<br>
         {% endif %}
 
-        {% if not schedule.block1 %}
-        <li>11am - 12pm: Available</li>
-        {% else %}
-        <li>11am - 12pm: Not Available</li>
+        {% if not schedule.block3 %}
+        <input type="radio" name="block" value="block3">11am - 12pm<br>
         {% endif %}
 
-        {% if not schedule.block1 %}
-        <li>12pm - 1pm: Available</li>
-        {% else %}
-        <li>12pm - 1pm: Not Available</li>
+        {% if not schedule.block4 %}
+        <input type="radio" name="block" value="block4">12pm -  1pm<br>
         {% endif %}
 
-        {% if not schedule.block1 %}
-        <li>1pm - 2pm: Available</li>
-        {% else %}
-        <li>1pm - 2pm: Not Available</li>
+        {% if not schedule.block5 %}
+        <input type="radio" name="block" value="block5"> 1pm -  2pm<br>
         {% endif %}
 
-        {% if not schedule.block1 %}
-        <li>2pm - 3pm: Available</li>
-        {% else %}
-        <li>2pm - 3pm: Not Available</li>
+        {% if not schedule.block6 %}
+        <input type="radio" name="block" value="block6"> 2pm -  3pm<br>
         {% endif %}
 
-        {% if not schedule.block1 %}
-        <li>3pm - 4pm: Available</li>
-        {% else %}
-        <li>3pm - 4pm: Not Available</li>
+        {% if not schedule.block7 %}
+        <input type="radio" name="block" value="block7"> 3pm -  4pm<br>
         {% endif %}
 
-        {% if not schedule.block1 %}
-        <li>4pm - 5pm: Available</li>
-        {% else %}
-        <li>4pm - 5pm: Not Available</li>
+        {% if not schedule.block8 %}
+        <input type="radio" name="block" value="block8"> 4pm -  5pm<br>
         {% endif %}
 
-    </ul>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+
+    </form>
     {% else %}
     <h5> Not working today </h5>
     {% endif %}
