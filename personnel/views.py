@@ -343,6 +343,10 @@ def get_physician_date(request, pk):
         if form.is_valid():
             date_obj = form.cleaned_data['date']
             values.current_date = date_obj.date.strftime('%Y-%m-%d')
+
+            shift = Shift.objects.get(date=values.dates, employee_no_id=values.current_physician)
+            values.current_shift = shift.pk
+
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:physician_avail', args=[values.current_physician, values.current_date]))
         else:
@@ -388,11 +392,11 @@ def get_appointment_selection(request, employee_no_id, date):
         form = PhysicianSelectTimeForm(request.POST)
         if form.is_valid():
             block = form.cleaned_data['block']
-            shift = Shift.objects.get(date=values.dates, employee_no_id=values.current_physician)
-            values.current_shift = shift
-            schedule = Schedule.objects.get(shift_no_id=shift.pk)
-            schedule.block = True
-            schedule.save()
+            # shift = Shift.objects.get(date=values.dates, employee_no_id=values.current_physician)
+            # values.current_shift = shift
+            schedule = Schedule.objects.get(shift_no_id=values.current_shift)
+            #schedule.block = True
+            #schedule.save()
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:index'))
