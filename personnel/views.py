@@ -383,7 +383,7 @@ class AvailView(generic.DetailView):
         return Shift.objects.all()
 
 
-def get_appointment_selection(request):
+def get_appointment_selection(request, employee_no_id):
     if request.method == 'POST':
         form = PhysicianSelectTimeForm(request.POST)
         if form.is_valid():
