@@ -388,13 +388,15 @@ def get_appointment_selection(request):
         form = PhysicianSelectTimeForm(request.POST)
         if form.is_valid():
             block = form.cleaned_data['block']
-            global current_physician
-            shift = Shift.objects.filter(employee_no_id=current_physician)
-            schedule = Schedule.objects.filter()
+            shift = Shift.objects.get(date=values.dates, employee_no_id=values.current_physician)
+            schedule = Schedule.objects.get(shift_no_id=shift.pk)
+            schedule.block = True
+            schedule.save()
+
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:index'))
         else:
             print(form.errors)
     else:
         form = PhysicianSelectTimeForm()
-    return render(request, 'personnel/availability.html', {'form': form})
+    return render(request, 'personnel/physician_times.html', {'form': form})
