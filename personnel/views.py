@@ -335,7 +335,7 @@ def get_physician_shift_info(request):
             values.current_physician = employee_no.pk
 
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('personnel:physician_dates', args=[employee_no.pk]))
+            return HttpResponseRedirect(reverse('personnel:physician_dates', args=[values.current_physician]))
         else:
             print(form.errors)
 
@@ -364,7 +364,7 @@ def get_physician_shift_info(request):
 
 def get_physician_date(request, pk):
     if request.method == 'POST':
-        form = PhysicianGetDateForm(request.POST)
+        form = PhysicianGetDateForm(request.POST, employee_no_id=pk)
         if form.is_valid():
             date_obj = form.cleaned_data['date']
             values.current_date = date_obj.date.strftime('%Y-%m-%d')
