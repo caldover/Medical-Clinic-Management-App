@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from .forms import PhysicianForm, SurgeonForm, NurseForm, ShiftForm, PhysicianGetShiftForm, PhysicianSelectTimeForm, PhysicianGetDateForm
 from . import values
+import datetime
 
 
 
@@ -341,7 +342,7 @@ def get_physician_date(request, pk):
         form = PhysicianGetDateForm(request.POST)
         if form.is_valid():
             date_obj = form.cleaned_data['date']
-            values.current_date = date_obj.date.strtime('%Y-%m-%d')
+            values.current_date = date_obj.date.strftime('%Y-%m-%d')
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:physician_avail', args=[values.current_date, values.current_physician]))
         else:
