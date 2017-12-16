@@ -1,2 +1,2 @@
-current_physician = None
-dates = None
+current_physician = 0
+dates = '2017-12-01'
