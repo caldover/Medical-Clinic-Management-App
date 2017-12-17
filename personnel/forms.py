@@ -80,7 +80,7 @@ class PhysicianGetDateForm(forms.Form):
     #date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=values.current_physician))
     # date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=2))
 
-    date = forms.ModelChoiceField()
+    #date = forms.ModelChoiceField()
 
     def __init__(self, *args, **kwargs):
         request = kwargs.pop('request',None)
