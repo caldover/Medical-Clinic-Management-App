@@ -151,6 +151,6 @@ class PhysicianSelectTimeForm(forms.Form):
         # return super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
 
         super(PhysicianSelectTimeForm, self).__init__(*args, **kwargs)
-        self.fields['time'].queryset = TimeBlock.objects.filter(shift_no_id=request)
+        self.fields['time'].queryset = TimeBlock.objects.filter(shift_no_id=request).filter(attending=False)
 
 
