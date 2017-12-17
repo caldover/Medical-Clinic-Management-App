@@ -138,6 +138,19 @@ class PhysicianSelectTimeForm(forms.Form):
     #
     # block = forms.ChoiceField(choices=block_choices)
 
-    time = forms.ModelChoiceField(label='Time', queryset=TimeBlock.objects.filter(shift_no_id=values.current_shift))
+    #time = forms.ModelChoiceField(label='Time', queryset=TimeBlock.objects.filter(shift_no_id=values.current_shift))
+
+
+    time = forms.ModelChoiceField(queryset=None)
+
+    def __init__(self, *args, **kwargs):
+        request = kwargs.pop('request', None)
+
+        # if not 'queryset' in kwargs:
+        #     kwargs['queryset'] = Shift.objects.filter(employee_no_id=values.current_physician)
+        # return super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
+
+        super(PhysicianSelectTimeForm, self).__init__(*args, **kwargs)
+        self.fields['time'].queryset = TimeBlock.objects.filter(shift_no_id=request)
 
 

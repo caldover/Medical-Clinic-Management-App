@@ -421,14 +421,23 @@ class AvailView(generic.DetailView):
 
 def get_appointment_selection(request, employee_no_id, date):
     if request.method == 'POST':
-        form = PhysicianSelectTimeForm(request.POST)
+        values.current_physician = employee_no_id
+        values.current_date = date
+        shift = Shift.objects.get(date=date, employee_no_id=employee_no_id)
+        form = PhysicianSelectTimeForm(request.POST, request=shift.pk)
+        #form = PhysicianSelectTimeForm(request.POST)
         if form.is_valid():
-            block = form.cleaned_data['block']
-            # shift = Shift.objects.get(date=values.dates, employee_no_id=values.current_physician)
+            time = form.cleaned_data['time']
+            time.attending = True
+            time.save()
+
+            #shift = Shift.objects.get(date=date, employee_no_id=employee_no_id)
             # values.current_shift = shift
-            schedule = Schedule.objects.get(shift_no_id=values.current_shift)
+            #schedule = Schedule.objects.get(shift_no_id=values.current_shift)
             #schedule.block = True
             #schedule.save()
+
+            time_block = TimeBlock.objects.get(shift_no_id=shift.pk)
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:index'))
