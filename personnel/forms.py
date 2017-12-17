@@ -84,13 +84,13 @@ class PhysicianGetDateForm(forms.Form):
 
     def __init__(self, *args,**kwargs):
         request = kwargs.pop('request',None)
+        if not 'queryset' in kwargs:
+            kwargs['queryset'] = Shift.objects.filter(employee_no_id=values.current_physician)
         super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
             #self.fields['date'].choices = [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)]
         # self.fields['date'].choices = zip(
         #     [Shift.objects.filter(employee_no_id=values.current_physician)], [Shift.objects.filter(employee_no_id=values.current_physician)]
         # )
-
-        self.fields['date'].queryset = Shift.objects.filter(employee_no_id=values.current_physician)
 
 
 
