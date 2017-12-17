@@ -366,7 +366,7 @@ def get_physician_date(request, pk):
     if request.method == 'POST':
         #form = PhysicianGetDateForm(request.POST, request=values.current_physician)
         values.current_physician = pk
-        form = PhysicianGetDateForm(request.POST, request=values.current_physician)
+        form = PhysicianGetDateForm(request.POST, request=pk)
         print(values.current_physician)
         print(pk)
         if form.is_valid():
@@ -383,7 +383,9 @@ def get_physician_date(request, pk):
             print(form.errors)
 
     else:
-        form = PhysicianGetDateForm(request.POST, request=values.current_physician)
+        print(values.current_physician)
+        print(pk)
+        form = PhysicianGetDateForm(request.POST, request=pk)
 
     return render(request, 'personnel/physician_dates.html', {'form': form})
 
