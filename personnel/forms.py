@@ -86,7 +86,10 @@ class PhysicianGetDateForm(forms.Form):
         request = kwargs.pop('request',None)
         super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
         if request:
-            self.fields['date'].choices = [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)]
+            #self.fields['date'].choices = [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)]
+            self.fields['date'].choices = [Shift.objects.all()]
+        else:
+            print('no request')
 
 
 
