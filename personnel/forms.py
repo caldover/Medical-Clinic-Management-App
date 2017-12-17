@@ -78,12 +78,23 @@ class PhysicianGetShiftForm(forms.Form):
 
 class PhysicianGetDateForm(forms.Form):
     #date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=values.current_physician))
-    date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=2))
+    # date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=2))
+    date = forms.ChoiceField()
+
+    def __init__(self, *args,**kwargs):
+        request = kwargs.pop('request',None)
+        super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
+        if request:
+            LANG = request.LANGUAGE_CODE
+            self.fields['date'].choices = zip(
+                [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)],
+                [x.locale.get(language__iexact=LANG).name for x in Shift.objects.filter(employee_no_id=values.current_physician)]
+            )
 
 
 class PhysicianSelectTimeForm(forms.Form):
     # block_choices = []
-    #
+
     # block1 = Schedule.objects.only("block1")
     # if not block1:
     #     block_choices.append(('block1', ' 9am - 10am'))

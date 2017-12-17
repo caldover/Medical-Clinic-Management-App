@@ -364,7 +364,7 @@ def get_physician_shift_info(request):
 
 def get_physician_date(request, pk):
     if request.method == 'POST':
-        form = PhysicianGetDateForm(request.POST, employee_no_id=pk)
+        form = PhysicianGetDateForm(request.POST, request=values.current_physician)
         print(values.current_physician)
         print(pk)
         if form.is_valid():
