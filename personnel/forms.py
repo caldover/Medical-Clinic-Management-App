@@ -77,18 +77,17 @@ class PhysicianGetShiftForm(forms.Form):
 
 
 class PhysicianGetDateForm(forms.Form):
-    date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=values.current_physician))
+    #date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=values.current_physician))
     # date = forms.ModelChoiceField(label='Date', queryset=Shift.objects.filter(employee_no_id=2))
 
-    # date = forms.ChoiceField()
+    date = forms.ChoiceField()
 
-    # def __init__(self, *args,**kwargs):
-    #     request = kwargs.pop('request',None)
-    #     super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
-    #     if request:
-    #         self.fields['date'].choices = zip(
-    #             [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)]
-    #         )
+    def __init__(self, *args,**kwargs):
+        request = kwargs.pop('request',None)
+        super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
+        if request:
+            self.fields['date'].choices = [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)]
+
 
 
 class PhysicianSelectTimeForm(forms.Form):
