@@ -82,7 +82,7 @@ class PhysicianGetDateForm(forms.Form):
 
     date = forms.ModelChoiceField(queryset=None)
 
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         request = kwargs.pop('request',None)
 
         # if not 'queryset' in kwargs:
