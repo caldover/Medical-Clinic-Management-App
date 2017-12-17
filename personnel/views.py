@@ -333,7 +333,7 @@ def get_physician_shift_info(request):
         if form.is_valid():
             employee_no = form.cleaned_data['employee_no']
             values.current_physician = employee_no.pk
-            form = PhysicianGetDateForm(request.POST, request=values.current_physician)
+            # form = PhysicianGetDateForm(request.POST, request=values.current_physician)
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('personnel:physician_dates', args=[values.current_physician]))
         else:
@@ -381,7 +381,7 @@ def get_physician_date(request, pk):
             print(form.errors)
 
     else:
-        form = PhysicianGetDateForm()
+        form = PhysicianGetDateForm(request.POST, request=values.current_physician)
 
     return render(request, 'personnel/physician_dates.html', {'form': form})
 
