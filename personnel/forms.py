@@ -87,7 +87,7 @@ class PhysicianGetDateForm(forms.Form):
         super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
             #self.fields['date'].choices = [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)]
         self.fields['date'].choices = zip(
-            [Shift.objects.all()], [Shift.objects.all()]
+            [Shift.objects.filter(employee_no_id=values.current_physician)], [Shift.objects.filter(employee_no_id=values.current_physician)]
         )
 
 
