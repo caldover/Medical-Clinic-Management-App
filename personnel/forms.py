@@ -85,10 +85,8 @@ class PhysicianGetDateForm(forms.Form):
         request = kwargs.pop('request',None)
         super(PhysicianGetDateForm,self).__init__(*args,**kwargs)
         if request:
-            LANG = request.LANGUAGE_CODE
             self.fields['date'].choices = zip(
-                [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)],
-                [x.locale.get(language__iexact=LANG).name for x in Shift.objects.filter(employee_no_id=values.current_physician)]
+                [x.date for x in Shift.objects.filter(employee_no_id=values.current_physician)]
             )
 
 
